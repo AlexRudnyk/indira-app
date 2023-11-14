@@ -1,5 +1,6 @@
 import { GoodProps } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 
 interface GoodCardProps {
   good: GoodProps;
@@ -7,13 +8,21 @@ interface GoodCardProps {
 
 const GoodCard = ({ good }: GoodCardProps) => {
   return (
-    <li>
-      <Image src={good.photoURL} alt="good" width={320} height={320} />
+    <li className="flex flex-col justify-between w-[400px] rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)]">
       <div>
-        <p>{good.title}</p>
-        <p>{good.text}</p>
-        <p>{good.price} UAH</p>
+        <Image
+          src={good.photoURL}
+          alt="good"
+          width={400}
+          height={400}
+          className="rounded-t-2xl"
+        />
+        <div className="p-2">
+          <p className="font-bold text-lg mb-4">{good.title}</p>
+          <p className="">{good.text}</p>
+        </div>
       </div>
+      <p className="p-2">{good.price} UAH</p>
     </li>
   );
 };

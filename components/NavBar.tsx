@@ -13,7 +13,7 @@ const NavBar = () => {
   let isLoggedIn = true;
 
   return (
-    <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)]">
+    <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] fixed top-0 left-0 w-screen bg-white">
       <div className="flex items-center ml-auto mr-auto w-[1280px] h-[96px] p-5 relative justify-between">
         <Link href="/">
           <span
