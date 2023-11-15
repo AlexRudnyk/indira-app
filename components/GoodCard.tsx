@@ -16,7 +16,7 @@ const GoodCard = ({ good }: GoodCardProps) => {
             alt="good"
             width={400}
             height={400}
-            className="rounded-t-2xl transition ease-in-out hover:scale-105"
+            className="rounded-t-2xl transition ease-in-out hover:scale-105 duration-300"
           />
           <div className="p-2">
             <p className="font-bold text-lg mb-4">{good.title}</p>

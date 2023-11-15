@@ -10,7 +10,7 @@ const great_vibes = Great_Vibes({
 });
 
 const NavBar = () => {
-  let isLoggedIn = true;
+  let isLoggedIn = false;
 
   return (
     <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] fixed top-0 left-0 w-screen bg-white z-10">
