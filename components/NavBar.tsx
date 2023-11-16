@@ -1,7 +1,7 @@
 import { Great_Vibes } from "next/font/google";
 import Mandala from "../public/mandala.png";
 import Image from "next/image";
-import { AuthNav, UserNav } from ".";
+import { AuthNav, UserNav } from "../components";
 import Link from "next/link";
 
 const great_vibes = Great_Vibes({
@@ -10,7 +10,7 @@ const great_vibes = Great_Vibes({
 });
 
 const NavBar = () => {
-  let isLoggedIn = false;
+  let isLoggedIn = true;
 
   return (
     <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] fixed top-0 left-0 w-screen bg-white z-10">
