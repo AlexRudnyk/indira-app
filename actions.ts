@@ -27,6 +27,7 @@ export const login = async (formData: FormData) => {
   try {
     const { data } = await axios.post("/api/auth/login", content);
     setAuthHeader(data.accessToken);
+    return data;
   } catch (error) {
     console.log(error);
   }
