@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import axios from "axios";
+import { store } from "./redux/store";
 
 axios.defaults.baseURL = "https://indira-backend.vercel.app";
 
@@ -37,6 +38,15 @@ export const logout = async () => {
   try {
     await axios.get("/api/auth/logout");
     clearAuthHeader();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const refreshUser = () => {
+  try {
+    const res = store.getState();
+    console.log("STORE", res);
   } catch (error) {
     console.log(error);
   }

@@ -1,10 +1,12 @@
 "use client";
 
-import { login } from "@/actions";
-import React, { useRef } from "react";
+import React, { FormEvent, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { useDispatch } from "react-redux";
-import { loginState } from "@/redux/auth/slice";
+import { AppDispatch } from "@/redux/store";
+import { login } from "../redux/auth/operations";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -16,23 +18,60 @@ function SubmitButton() {
   );
 }
 
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email()
+    .matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
+    .min(5, "Atleast_5")
+    .max(63, "Email_length")
+    .required("Email_required"),
+  password: yup
+    .string()
+    .min(7, "Atleast_7")
+    .max(12, "Password_length")
+    .matches(/^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/, "Only_latinic")
+    .required("Password_required"),
+});
+
 export const LoginForm = () => {
   const ref = useRef<HTMLFormElement>(null);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const handleSubmit = async (
+    { email, password }: { email: string; password: string },
+    { resetForm }: { resetForm: any }
+  ) => {
+    try {
+      dispatch(login({ email, password }));
+
+      resetForm();
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
 
   return (
-    <form
-      ref={ref}
-      action={async (formData) => {
-        ref.current?.reset();
-        const res = await login(formData);
-        dispatch(loginState(res));
-      }}
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={schema}
     >
-      <input type="email" name="email" placeholder="Email" />
-      <input type="password" name="password" placeholder="Password" />
-      <SubmitButton />
-    </form>
+      <Form>
+        <Field type="email" name="email" placeholder="example@mail.com" />
+        <ErrorMessage name="email" />
+
+        <Field type="password" name="password" placeholder="Password" />
+        <ErrorMessage name="password" />
+
+        <SubmitButton />
+      </Form>
+    </Formik>
   );
 };
 

@@ -1,6 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
+import {
+  ActionReducerMapBuilder,
+  createSlice,
+  PayloadAction,
+  Slice,
+} from "@reduxjs/toolkit";
 import { GoodProps } from "@/types";
+import { RootState } from "../store";
+import { login, logout, refreshUser } from "./operations";
 
 interface AuthState {
   user: {
@@ -36,37 +42,70 @@ const initialState: AuthState = {
   error: false,
 };
 
-const authSlice = createSlice({
+const handlePending = (state: RootState) => {
+  state.isRefreshing = true;
+};
+
+const handleRejected = (
+  state: RootState,
+  action: PayloadAction<any | boolean>
+) => {
+  state.isRefreshing = false;
+  state.error = action.payload.message || false;
+};
+
+const authSlice: Slice<AuthState, {}, "auth"> = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    loginState: (state, action: PayloadAction<AuthState>) => {
-      state.user = action.payload.user;
-      state.accessToken = action.payload.accessToken;
-      state.refreshToken = action.payload.refreshToken;
-      state.isLoggedIn = true;
-      state.isRefreshing = false;
-      state.error = false;
-    },
-    logoutState: (state) => {
-      state.user = {
-        _id: null,
-        name: null,
-        email: null,
-        phone: null,
-        role: null,
-        goodsInCart: [],
-      };
-      state.accessToken = null;
-      state.refreshToken = null;
+  reducers: {},
+  extraReducers: (builder: ActionReducerMapBuilder<RootState>) => {
+    builder
+      .addCase(login.pending, handlePending)
+      .addCase(login.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(
+        login.rejected,
+        (state, action: PayloadAction<any | boolean>) => {
+          state.isRefreshing = false;
+          state.error = action.payload.message || false;
+        }
+      )
 
-      state.isLoggedIn = false;
-      state.isRefreshing = false;
-      state.error = false;
-    },
+      .addCase(logout.pending, handlePending)
+      .addCase(logout.fulfilled, (state, action) => {
+        state.user = {
+          _id: null,
+          name: null,
+          email: null,
+          phone: null,
+          role: null,
+          goodsInCart: [],
+        };
+        state.accessToken = null;
+        state.refreshToken = null;
+
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(logout.rejected, handleRejected)
+
+      .addCase(refreshUser.pending, handlePending)
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(refreshUser.rejected, handleRejected);
   },
 });
-
-export const { loginState, logoutState } = authSlice.actions;
 
 export default authSlice.reducer;
