@@ -4,5 +4,6 @@ import AuthNav from "./AuthNav";
 import UserNav from "./UserNav";
 import GoodCard from "./GoodCard";
 import LoginForm from "./LoginForm";
+import Loader from "./Loader";
 
-export { NavBar, CustomBtn, AuthNav, UserNav, GoodCard, LoginForm };
+export { NavBar, CustomBtn, AuthNav, UserNav, GoodCard, LoginForm, Loader };
