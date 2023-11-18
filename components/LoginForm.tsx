@@ -7,6 +7,7 @@ import { AppDispatch } from "@/redux/store";
 import { login } from "../redux/auth/operations";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { useRouter } from "next/navigation";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -35,8 +36,8 @@ const schema = yup.object().shape({
 });
 
 export const LoginForm = () => {
-  const ref = useRef<HTMLFormElement>(null);
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
   const initialValues = {
     email: "",
@@ -48,9 +49,9 @@ export const LoginForm = () => {
     { resetForm }: { resetForm: any }
   ) => {
     try {
-      dispatch(login({ email, password }));
-
       resetForm();
+      await dispatch(login({ email, password }));
+      router.push("/");
     } catch (error: any) {
       console.log(error.message);
     }

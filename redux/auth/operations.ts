@@ -3,7 +3,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 axios.defaults.baseURL = "https://indira-backend.vercel.app";
-// axios.defaults.baseURL = 'http://localhost:3030';
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
