@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 import { NavBar } from "@/components";
 import Providers from "@/redux/Provider";
+import PersistGates from "@/redux/PersistGate";
 
 export const metadata: Metadata = {
   title: "Indira",
@@ -18,8 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <NavBar />
-          {children}
+          <PersistGates>
+            <NavBar />
+            {children}
+          </PersistGates>
         </Providers>
       </body>
     </html>
