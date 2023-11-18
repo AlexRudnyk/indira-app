@@ -1,11 +1,9 @@
 import { fetchGoods } from "@/utils";
 import { GoodProps } from "@/types";
 import { GoodCard } from "@/components";
-import { refreshUser } from "@/actions";
 
 export default async function Home() {
   const allGoods = await fetchGoods();
-  // refreshUser();
 
   return (
     <main>
