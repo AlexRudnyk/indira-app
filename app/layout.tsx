@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { NavBar } from "@/components";
+import { NavBar, ReduxWrapper } from "@/components";
 import Providers from "@/redux/Provider";
 import PersistGates from "@/redux/PersistGate";
 
@@ -19,8 +19,10 @@ export default function RootLayout({
       <body>
         <Providers>
           <PersistGates>
-            <NavBar />
-            {children}
+            <ReduxWrapper>
+              <NavBar />
+              {children}
+            </ReduxWrapper>
           </PersistGates>
         </Providers>
       </body>
