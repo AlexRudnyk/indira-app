@@ -1,9 +1,9 @@
 "use client";
 
-import React, { FormEvent, useRef } from "react";
+import React, { useEffect } from "react";
 import { useFormStatus } from "react-dom";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
 import { login } from "../redux/auth/operations";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
@@ -38,6 +38,11 @@ const schema = yup.object().shape({
 export const LoginForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+
+  useEffect(() => {
+    isLoggedIn ? router.replace("/") : router.replace("/login");
+  }, [isLoggedIn, router]);
 
   const initialValues = {
     email: "",
@@ -51,7 +56,6 @@ export const LoginForm = () => {
     try {
       resetForm();
       await dispatch(login({ email, password }));
-      router.push("/");
     } catch (error: any) {
       console.log(error.message);
     }
