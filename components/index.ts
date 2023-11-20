@@ -6,6 +6,7 @@ import GoodCard from "./GoodCard";
 import LoginForm from "./LoginForm";
 import Loader from "./Loader";
 import ReduxWrapper from "./ReduxWrapper";
+import RegisterForm from "./RegisterForm";
 
 export {
   NavBar,
@@ -13,6 +14,7 @@ export {
   AuthNav,
   UserNav,
   GoodCard,
+  RegisterForm,
   LoginForm,
   Loader,
   ReduxWrapper,
