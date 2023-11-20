@@ -98,7 +98,7 @@ const RegisterForm = () => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form className="flex flex-col w-[400px] p-6 rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)]">
+      <Form className="flex flex-col w-[400px] p-6 rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] bg-white">
         <div className="relative">
           <Field
             type="text"
