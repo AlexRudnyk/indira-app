@@ -17,3 +17,24 @@ export interface GoodProps {
   photoURL: string;
   price: number;
 }
+
+export interface RegCredentialsProps {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+}
+
+export interface LogCredentialsProps {
+  email: string;
+  password: string;
+}
+
+export interface UserProps {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  goodsInCart: GoodProps[];
+}

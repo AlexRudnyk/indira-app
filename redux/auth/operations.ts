@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { RegCredentialsProps, LogCredentialsProps } from "@/types";
 
 axios.defaults.baseURL = "https://indira-backend.vercel.app";
 
@@ -14,22 +15,9 @@ const clearAuthHeader = () => {
 
 export const signup = createAsyncThunk(
   "auth/signup",
-  async (
-    {
-      name,
-      email,
-      phone,
-      password,
-    }: { name: string; email: string; phone: string; password: string },
-    thunkAPI
-  ) => {
+  async (credentials: RegCredentialsProps, thunkAPI) => {
     try {
-      const { data } = await axios.post("/api/auth/signup", {
-        name,
-        email,
-        phone,
-        password,
-      });
+      const { data } = await axios.post("/api/auth/signup", credentials);
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -39,12 +27,9 @@ export const signup = createAsyncThunk(
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (
-    { email, password }: { email: string; password: string },
-    thunkAPI
-  ) => {
+  async (credentials: LogCredentialsProps, thunkAPI) => {
     try {
-      const { data } = await axios.post("/api/auth/login", { email, password });
+      const { data } = await axios.post("/api/auth/login", credentials);
       setAuthHeader(data.accessToken);
       localStorage.setItem("refreshToken", data.refreshToken);
       return data;
@@ -75,6 +60,42 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const { data } = await axios.get("/api/auth/current");
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const addToCart = createAsyncThunk(
+  "auth/addToCart",
+  async (id: string, thunkAPI) => {
+    try {
+      const { data } = await axios.post(`/api/users/addtocart/${id}`);
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const deleteFromCart = createAsyncThunk(
+  "auth/deleteFromCart",
+  async (id: string, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`/api/users/deletefromcart/${id}`);
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const clearCart = createAsyncThunk(
+  "auth/clearCart",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("/api/users/clearcart");
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data);

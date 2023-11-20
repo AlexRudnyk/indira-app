@@ -6,7 +6,14 @@ import {
 } from "@reduxjs/toolkit";
 import { GoodProps } from "@/types";
 import { RootState } from "../store";
-import { login, logout, refreshUser } from "./operations";
+import {
+  addToCart,
+  clearCart,
+  deleteFromCart,
+  login,
+  logout,
+  refreshUser,
+} from "./operations";
 
 interface AuthState {
   user: {
@@ -104,7 +111,30 @@ const authSlice: Slice<AuthState, {}, "auth"> = createSlice({
         state.isRefreshing = false;
         state.error = false;
       })
-      .addCase(refreshUser.rejected, handleRejected);
+      .addCase(refreshUser.rejected, handleRejected)
+      .addCase(addToCart.pending, handlePending)
+      .addCase(addToCart.fulfilled, (state, action) => {
+        state.user.goodsInCart = [...state.user.goodsInCart, action.payload];
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(addToCart.rejected, handleRejected)
+      .addCase(deleteFromCart.pending, handlePending)
+      .addCase(deleteFromCart.fulfilled, (state, action) => {
+        state.user.goodsInCart = state.user.goodsInCart.filter(
+          (item: GoodProps) => item !== action.payload
+        );
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(deleteFromCart.rejected, handleRejected)
+      .addCase(clearCart.pending, handlePending)
+      .addCase(clearCart.fulfilled, (state, action) => {
+        state.user.goodsInCart = [];
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(clearCart.rejected, handleRejected);
   },
 });
 

@@ -7,6 +7,9 @@ import LoginForm from "./LoginForm";
 import Loader from "./Loader";
 import ReduxWrapper from "./ReduxWrapper";
 import RegisterForm from "./RegisterForm";
+import AddToCartBtn from "./AddToCartBtn";
+import ReadCommentsBtn from "./ReadCommentsBtn";
+import WriteCommentBtn from "./WriteCommentBtn";
 
 export {
   NavBar,
@@ -18,4 +21,7 @@ export {
   LoginForm,
   Loader,
   ReduxWrapper,
+  AddToCartBtn,
+  ReadCommentsBtn,
+  WriteCommentBtn,
 };
