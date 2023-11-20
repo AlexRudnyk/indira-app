@@ -13,14 +13,22 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button type="submit" disabled={pending}>
+    <button
+      type="submit"
+      disabled={pending}
+      className="flex self-center justify-center items-center w-[150px] bg-[var(--primary)] text-white rounded-2xl py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110"
+    >
       Submit
     </button>
   );
 }
 
 const schema = yup.object().shape({
-  name: yup.string().min(2).max(16, "Less_than_16").required("Name_required"),
+  name: yup
+    .string()
+    .min(2)
+    .max(16, "Less_than_16")
+    .required("Name is required"),
   email: yup
     .string()
     .email()
@@ -30,17 +38,17 @@ const schema = yup.object().shape({
     )
     .min(5, "Atleast_5")
     .max(63, "Email_length")
-    .required("Email_required"),
+    .required("Email is required"),
   phone: yup
     .string()
     .matches(/^\+380\d{9}$/)
-    .required("Phone_required"),
+    .required("Phone is required"),
   password: yup
     .string()
     .min(7, "Atleast_7")
     .max(12, "Password_length")
     .matches(/^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/, "Only_latinic")
-    .required("Password_required"),
+    .required("Password is required"),
 });
 
 const RegisterForm = () => {
@@ -90,18 +98,54 @@ const RegisterForm = () => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form>
-        <Field type="text" name="name" placeholder="John Doe" />
-        <ErrorMessage name="name" />
+      <Form className="flex flex-col w-[400px] p-6 rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)]">
+        <div className="relative">
+          <Field
+            type="text"
+            name="name"
+            placeholder="John Doe"
+            className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
+          />
+          <div className="absolute top-10 text-red-600">
+            <ErrorMessage name="name" />
+          </div>
+        </div>
 
-        <Field type="text" name="phone" placeholder="+380671112233" />
-        <ErrorMessage name="phone" />
+        <div className="relative">
+          <Field
+            type="text"
+            name="phone"
+            placeholder="+380671112233"
+            className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
+          />
+          <div className="absolute top-10 text-red-600">
+            <ErrorMessage name="phone" />
+          </div>
+        </div>
 
-        <Field type="email" name="email" placeholder="example@mail.com" />
-        <ErrorMessage name="email" />
+        <div className="relative">
+          <Field
+            type="email"
+            name="email"
+            placeholder="example@mail.com"
+            className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
+          />
+          <div className="absolute top-10 text-red-600">
+            <ErrorMessage name="email" />
+          </div>
+        </div>
 
-        <Field type="password" name="password" placeholder="Password" />
-        <ErrorMessage name="password" />
+        <div className="relative">
+          <Field
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
+          />
+          <div className="absolute top-10 text-red-600">
+            <ErrorMessage name="password" />
+          </div>
+        </div>
 
         <SubmitButton />
       </Form>

@@ -3,7 +3,7 @@ import React from "react";
 
 const Register = () => {
   return (
-    <div className="mt-[100px]">
+    <div className="flex justify-center items-center h-screen">
       <RegisterForm />
     </div>
   );
