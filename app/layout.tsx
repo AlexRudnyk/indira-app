@@ -3,6 +3,7 @@ import "./globals.css";
 import { NavBar, ReduxWrapper } from "@/components";
 import Providers from "@/redux/Provider";
 import PersistGates from "@/redux/PersistGate";
+import { GlobalContextProvider } from "./context/store";
 
 export const metadata: Metadata = {
   title: "Indira",
@@ -20,8 +21,10 @@ export default function RootLayout({
         <Providers>
           <PersistGates>
             <ReduxWrapper>
-              <NavBar />
-              {children}
+              <GlobalContextProvider>
+                <NavBar />
+                {children}
+              </GlobalContextProvider>
             </ReduxWrapper>
           </PersistGates>
         </Providers>
