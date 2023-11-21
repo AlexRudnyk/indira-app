@@ -1,11 +1,6 @@
 import { fetchSpecificGood } from "@/utils";
 import { GoodProps } from "@/types";
-import {
-  AddToCartBtn,
-  GoodCard,
-  ReadCommentsBtn,
-  WriteCommentBtn,
-} from "@/components";
+import { AddToCartBtn, ReadCommentsBtn, WriteCommentBtn } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchGoods } from "@/utils";

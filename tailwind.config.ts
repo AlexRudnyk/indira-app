@@ -14,7 +14,7 @@ const config: Config = {
       keyframes: {
         marquee: {
           from: { transform: "translateX(25%)" },
-          to: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(-55%)" },
         },
       },
       animation: {

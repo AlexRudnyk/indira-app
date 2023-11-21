@@ -18,13 +18,6 @@ const AuthNav = () => {
           containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3"
         />
       </Link>
-      <Link href="/cart">
-        <CustomBtn
-          title="Cart"
-          btnType="button"
-          containerStyles="bg-[var(--primary)] text-white rounded-2xl"
-        />
-      </Link>
     </>
   );
 };

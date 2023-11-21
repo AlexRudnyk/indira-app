@@ -20,11 +20,6 @@ const UserNav = () => {
           dispatch(logout());
         }}
       />
-      <CustomBtn
-        title="Cart"
-        btnType="button"
-        containerStyles="bg-[var(--primary)] text-white rounded-2xl"
-      />
     </>
   );
 };
