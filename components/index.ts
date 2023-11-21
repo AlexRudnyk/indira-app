@@ -10,6 +10,7 @@ import RegisterForm from "./RegisterForm";
 import AddToCartBtn from "./AddToCartBtn";
 import ReadCommentsBtn from "./ReadCommentsBtn";
 import WriteCommentBtn from "./WriteCommentBtn";
+import GoodsInCartIndicator from "./GoodsInCartIndicator";
 
 export {
   NavBar,
@@ -24,4 +25,5 @@ export {
   AddToCartBtn,
   ReadCommentsBtn,
   WriteCommentBtn,
+  GoodsInCartIndicator,
 };

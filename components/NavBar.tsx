@@ -3,7 +3,12 @@
 import { Great_Vibes } from "next/font/google";
 import Mandala from "../public/mandala.png";
 import Image from "next/image";
-import { AuthNav, CustomBtn, UserNav } from "../components";
+import {
+  AuthNav,
+  CustomBtn,
+  GoodsInCartIndicator,
+  UserNav,
+} from "../components";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -34,12 +39,13 @@ const NavBar = () => {
         </Link>
         <nav className="flex items-center">
           {isLoggedIn ? <UserNav /> : <AuthNav />}
-          <Link href="/cart">
+          <Link href="/cart" className="relative">
             <CustomBtn
               title="Cart"
               btnType="button"
               containerStyles="bg-[var(--primary)] text-white rounded-2xl"
             />
+            <GoodsInCartIndicator />
           </Link>
         </nav>
       </div>
