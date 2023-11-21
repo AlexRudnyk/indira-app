@@ -5,3 +5,9 @@
 :root {
   --primary: #654321;
 }
+
+@layer utilities {
+  .pause {
+    animation-play-state: paused;
+  }
+}

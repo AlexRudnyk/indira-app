@@ -10,7 +10,17 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(25%)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        slider: "marquee 25s linear infinite",
+      },
+    },
   },
   plugins: [],
 };
