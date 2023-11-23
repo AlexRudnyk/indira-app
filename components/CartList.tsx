@@ -2,8 +2,9 @@
 
 import { GoodProps } from "@/types";
 import { useGlobalContext } from "@/app/context/store";
-import { CartItem } from ".";
+import { CartItem, CustomBtn } from ".";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
   const { cart } = useGlobalContext();
@@ -24,8 +25,15 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
       ))}
     </ul>
   ) : (
-    <div>
-      <p>Your cart is empty</p>
+    <div className="flex flex-col w-full justify-center items-center mt-11">
+      <p className="font-bold text-5xl mb-28">Your cart is empty</p>
+      <Link href="/">
+        <CustomBtn
+          btnType="button"
+          title="To go shopping!"
+          containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3"
+        />
+      </Link>
     </div>
   );
 };

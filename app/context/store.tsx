@@ -12,11 +12,13 @@ import React, {
 interface ContextProps {
   cart: string[];
   setCart: Dispatch<SetStateAction<string[]>>;
+  handleDeleteFromCart: (id: string) => void;
 }
 
 const GlobalContext = createContext<ContextProps>({
   cart: [],
-  setCart: (): string[] => [],
+  setCart: (): void => {},
+  handleDeleteFromCart: (): void => {},
 });
 
 export const GlobalContextProvider = ({
@@ -26,6 +28,12 @@ export const GlobalContextProvider = ({
 }) => {
   const initialState: string[] = [];
   const [cart, setCart] = useState<string[]>(initialState);
+
+  const handleDeleteFromCart = (id: string): void => {
+    const filteredCart = cart.filter((item: string) => item !== id);
+    setCart(filteredCart);
+    localStorage.setItem("cart", JSON.stringify(filteredCart));
+  };
 
   useEffect(() => {
     const storedCartData = localStorage.getItem("cart");
@@ -41,7 +49,7 @@ export const GlobalContextProvider = ({
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ cart, setCart }}>
+    <GlobalContext.Provider value={{ cart, setCart, handleDeleteFromCart }}>
       {children}
     </GlobalContext.Provider>
   );
