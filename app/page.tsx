@@ -1,6 +1,6 @@
 import { fetchGoods } from "@/utils";
-import { GoodProps } from "@/types";
 import { GoodCard } from "@/components";
+import { GoodProps } from "@/types";
 
 export default async function Home() {
   const allGoods: GoodProps[] = await fetchGoods();

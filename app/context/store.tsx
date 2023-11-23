@@ -33,7 +33,6 @@ export const GlobalContextProvider = ({
     if (storedCartData) {
       try {
         const cartData = JSON.parse(storedCartData);
-        console.log("CartData", cartData);
         setCart(cartData);
       } catch (error) {
         console.error("Error parsing JSON from localStorage:", error);

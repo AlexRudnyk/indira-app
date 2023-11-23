@@ -11,6 +11,8 @@ import AddToCartBtn from "./AddToCartBtn";
 import ReadCommentsBtn from "./ReadCommentsBtn";
 import WriteCommentBtn from "./WriteCommentBtn";
 import GoodsInCartIndicator from "./GoodsInCartIndicator";
+import CartList from "./CartList";
+import CartItem from "./CartItem";
 
 export {
   NavBar,
@@ -26,4 +28,6 @@ export {
   ReadCommentsBtn,
   WriteCommentBtn,
   GoodsInCartIndicator,
+  CartList,
+  CartItem,
 };
