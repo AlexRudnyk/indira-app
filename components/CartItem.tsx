@@ -24,7 +24,10 @@ const CartItem = ({ good }: { good: GoodProps }) => {
           <h1 className="text-xl font-bold mb-3">{good.title}</h1>
           <p>{good.text}</p>
         </div>
-        <div className="flex items-center w-[200px] ml-auto mr-10">
+        <div className="flex items-center w-auto ml-auto mr-10">
+          <p className="mr-8">
+            Price: <span className="font-bold">{good.price}</span> UAH
+          </p>
           <button
             type="button"
             onClick={() => setCount((prev) => prev - 1)}
