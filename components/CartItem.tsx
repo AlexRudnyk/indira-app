@@ -1,14 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoodProps } from "@/types";
 import Image from "next/image";
 import { ImBin2 } from "react-icons/im";
 import { useGlobalContext } from "@/app/context/store";
 
-const CartItem = ({ good }: { good: GoodProps }) => {
+const CartItem = ({
+  good,
+  getTotalSum,
+  goodInfo,
+}: {
+  good: GoodProps;
+  getTotalSum: (sum: number) => void;
+  goodInfo: ({
+    title,
+    price,
+    count,
+  }: {
+    title: string;
+    price: number;
+    count: number;
+  }) => void;
+}) => {
   const [count, setCount] = useState<number>(1);
   const { handleDeleteFromCart } = useGlobalContext();
+
+  useEffect(() => {
+    getTotalSum(good.price * count);
+    goodInfo({
+      title: good.title,
+      price: good.price,
+      count,
+    });
+  }, [count, getTotalSum, good.price, good.title, goodInfo]);
 
   return (
     <li className="mb-8">
@@ -36,7 +61,7 @@ const CartItem = ({ good }: { good: GoodProps }) => {
           >
             <span className="text-2xl">-</span>
           </button>
-          <p className="mx-4 text-2xl">{count}</p>
+          <p className="text-2xl w-[60px] text-center">{count}</p>
           <button
             type="button"
             onClick={() => setCount((prev) => prev + 1)}
