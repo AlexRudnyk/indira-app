@@ -104,9 +104,12 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
         ))}
       </ul>
       <div className="flex justify-center items-center">
-        <p className="text-xl mr-6">
-          Your order total Sum is:{" "}
-          <span className="text-3xl font-bold px-4">{totalSum}</span> UAH
+        <p className="text-xl mr-6 flex justify-center items-baseline">
+          Your order total Sum is:
+          <span className="text-3xl font-bold px-4 inline-block w-[100px] text-center">
+            {totalSum}
+          </span>
+          UAH
         </p>
         <CustomBtn
           btnType="button"
