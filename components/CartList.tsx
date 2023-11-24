@@ -2,7 +2,7 @@
 
 import { GoodProps } from "@/types";
 import { useGlobalContext } from "@/app/context/store";
-import { CartItem, CustomBtn } from ".";
+import { CartItem, CustomBtn, OrderModal } from ".";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
@@ -45,6 +45,10 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
     setTotalSum(totalSumRes);
   };
 
+  const handleOrderModalClose = (): void => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   const handleOrderSubmit = async ({
     name,
     phone,
@@ -69,7 +73,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
       );
       localStorage.removeItem("cart");
       setCart([]);
-      return data;
+      //   return data;
     } catch (error: any) {
       console.log(error.message);
     }
@@ -111,6 +115,12 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
           handleClick={handleMakeOrder}
         />
       </div>
+      {isModalOpen && (
+        <OrderModal
+          onCloseModal={handleOrderModalClose}
+          onOrderSubmit={handleOrderSubmit}
+        />
+      )}
     </>
   ) : (
     <div className="flex flex-col w-full justify-center items-center mt-11">

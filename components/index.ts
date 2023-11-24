@@ -13,6 +13,7 @@ import WriteCommentBtn from "./WriteCommentBtn";
 import GoodsInCartIndicator from "./GoodsInCartIndicator";
 import CartList from "./CartList";
 import CartItem from "./CartItem";
+import OrderModal from "./OrderModal";
 
 export {
   NavBar,
@@ -30,4 +31,5 @@ export {
   GoodsInCartIndicator,
   CartList,
   CartItem,
+  OrderModal,
 };
