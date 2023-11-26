@@ -53,3 +53,19 @@ export interface EditGoodProps {
   description?: string;
   price?: number;
 }
+export interface AuthState {
+  user: {
+    _id: null | string;
+    name: null | string;
+    email: null | string;
+    phone: null | string;
+    role: null | string;
+    goodsInCart: GoodProps[];
+  };
+  accessToken: null | string;
+  refreshToken: null | string;
+
+  isLoggedIn: boolean;
+  isRefreshing: boolean;
+  error: any | boolean;
+}

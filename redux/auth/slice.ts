@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GoodProps, UserProps } from "@/types";
+import { AuthState, GoodProps, UserProps } from "@/types";
 import {
   addToCart,
   clearCart,
@@ -9,23 +9,6 @@ import {
   refreshUser,
   signup,
 } from "./operations";
-
-interface AuthState {
-  user: {
-    _id: null | string;
-    name: null | string;
-    email: null | string;
-    phone: null | string;
-    role: null | string;
-    goodsInCart: GoodProps[];
-  };
-  accessToken: null | string;
-  refreshToken: null | string;
-
-  isLoggedIn: boolean;
-  isRefreshing: boolean;
-  error: any | boolean;
-}
 
 const initialState: AuthState = {
   user: {
