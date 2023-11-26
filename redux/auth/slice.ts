@@ -1,11 +1,5 @@
-import {
-  ActionReducerMapBuilder,
-  createSlice,
-  PayloadAction,
-  Slice,
-} from "@reduxjs/toolkit";
-import { GoodProps } from "@/types";
-import { RootState } from "../store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { GoodProps, UserProps } from "@/types";
 import {
   addToCart,
   clearCart,
@@ -50,12 +44,12 @@ const initialState: AuthState = {
   error: false,
 };
 
-const handlePending = (state: RootState) => {
+const handlePending = (state: AuthState) => {
   state.isRefreshing = true;
 };
 
 const handleRejected = (
-  state: RootState,
+  state: AuthState,
   action: PayloadAction<any | boolean>
 ) => {
   state.isRefreshing = false;
@@ -69,7 +63,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signup.pending, handlePending)
-      .addCase(signup.fulfilled, (state: RootState) => {
+      .addCase(signup.fulfilled, (state: AuthState) => {
         state.isRefreshing = false;
         state.error = false;
       })
@@ -78,7 +72,7 @@ const authSlice = createSlice({
       .addCase(login.pending, handlePending)
       .addCase(
         login.fulfilled,
-        (state: RootState, action: PayloadAction<AuthState>) => {
+        (state: AuthState, action: PayloadAction<AuthState>) => {
           state.user = action.payload.user;
           state.accessToken = action.payload.accessToken;
           state.refreshToken = action.payload.refreshToken;
@@ -89,14 +83,14 @@ const authSlice = createSlice({
       )
       .addCase(
         login.rejected,
-        (state: RootState, action: PayloadAction<any | boolean>) => {
+        (state: AuthState, action: PayloadAction<any | boolean>) => {
           state.isRefreshing = false;
           state.error = action.payload.message || false;
         }
       )
 
       .addCase(logout.pending, handlePending)
-      .addCase(logout.fulfilled, (state: RootState) => {
+      .addCase(logout.fulfilled, (state: AuthState) => {
         state.user = {
           _id: null,
           name: null,
@@ -117,7 +111,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.pending, handlePending)
       .addCase(
         refreshUser.fulfilled,
-        (state: RootState, action: PayloadAction<AuthState>) => {
+        (state: AuthState, action: PayloadAction<UserProps>) => {
           state.user = action.payload;
 
           state.isLoggedIn = true;
@@ -129,7 +123,7 @@ const authSlice = createSlice({
       .addCase(addToCart.pending, handlePending)
       .addCase(
         addToCart.fulfilled,
-        (state: RootState, action: PayloadAction<AuthState>) => {
+        (state: AuthState, action: PayloadAction<GoodProps>) => {
           state.user.goodsInCart = [...state.user.goodsInCart, action.payload];
           state.isRefreshing = false;
           state.error = false;
@@ -139,9 +133,9 @@ const authSlice = createSlice({
       .addCase(deleteFromCart.pending, handlePending)
       .addCase(
         deleteFromCart.fulfilled,
-        (state: RootState, action: PayloadAction<string>) => {
+        (state: AuthState, action: PayloadAction<GoodProps>) => {
           state.user.goodsInCart = state.user.goodsInCart.filter(
-            (item: string) => item !== action.payload
+            (item) => item !== action.payload
           );
           state.isRefreshing = false;
           state.error = false;
@@ -149,7 +143,7 @@ const authSlice = createSlice({
       )
       .addCase(deleteFromCart.rejected, handleRejected)
       .addCase(clearCart.pending, handlePending)
-      .addCase(clearCart.fulfilled, (state: RootState) => {
+      .addCase(clearCart.fulfilled, (state: AuthState) => {
         state.user.goodsInCart = [];
         state.isRefreshing = false;
         state.error = false;
