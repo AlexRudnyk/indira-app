@@ -13,6 +13,7 @@ import {
   login,
   logout,
   refreshUser,
+  signup,
 } from "./operations";
 
 interface AuthState {
@@ -29,7 +30,7 @@ interface AuthState {
 
   isLoggedIn: boolean;
   isRefreshing: boolean;
-  error: string | boolean;
+  error: any | boolean;
 }
 
 const initialState: AuthState = {
@@ -61,31 +62,41 @@ const handleRejected = (
   state.error = action.payload.message || false;
 };
 
-const authSlice: Slice<AuthState, {}, "auth"> = createSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {},
-  extraReducers: (builder: ActionReducerMapBuilder<RootState>) => {
+  extraReducers: (builder) => {
     builder
-      .addCase(login.pending, handlePending)
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
-        state.isLoggedIn = true;
+      .addCase(signup.pending, handlePending)
+      .addCase(signup.fulfilled, (state: RootState) => {
         state.isRefreshing = false;
         state.error = false;
       })
+      .addCase(signup.rejected, handleRejected)
+
+      .addCase(login.pending, handlePending)
+      .addCase(
+        login.fulfilled,
+        (state: RootState, action: PayloadAction<AuthState>) => {
+          state.user = action.payload.user;
+          state.accessToken = action.payload.accessToken;
+          state.refreshToken = action.payload.refreshToken;
+          state.isLoggedIn = true;
+          state.isRefreshing = false;
+          state.error = false;
+        }
+      )
       .addCase(
         login.rejected,
-        (state, action: PayloadAction<any | boolean>) => {
+        (state: RootState, action: PayloadAction<any | boolean>) => {
           state.isRefreshing = false;
           state.error = action.payload.message || false;
         }
       )
 
       .addCase(logout.pending, handlePending)
-      .addCase(logout.fulfilled, (state, action) => {
+      .addCase(logout.fulfilled, (state: RootState) => {
         state.user = {
           _id: null,
           name: null,
@@ -104,32 +115,41 @@ const authSlice: Slice<AuthState, {}, "auth"> = createSlice({
       .addCase(logout.rejected, handleRejected)
 
       .addCase(refreshUser.pending, handlePending)
-      .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+      .addCase(
+        refreshUser.fulfilled,
+        (state: RootState, action: PayloadAction<AuthState>) => {
+          state.user = action.payload;
 
-        state.isLoggedIn = true;
-        state.isRefreshing = false;
-        state.error = false;
-      })
+          state.isLoggedIn = true;
+          state.isRefreshing = false;
+          state.error = false;
+        }
+      )
       .addCase(refreshUser.rejected, handleRejected)
       .addCase(addToCart.pending, handlePending)
-      .addCase(addToCart.fulfilled, (state, action) => {
-        state.user.goodsInCart = [...state.user.goodsInCart, action.payload];
-        state.isRefreshing = false;
-        state.error = false;
-      })
+      .addCase(
+        addToCart.fulfilled,
+        (state: RootState, action: PayloadAction<AuthState>) => {
+          state.user.goodsInCart = [...state.user.goodsInCart, action.payload];
+          state.isRefreshing = false;
+          state.error = false;
+        }
+      )
       .addCase(addToCart.rejected, handleRejected)
       .addCase(deleteFromCart.pending, handlePending)
-      .addCase(deleteFromCart.fulfilled, (state, action) => {
-        state.user.goodsInCart = state.user.goodsInCart.filter(
-          (item: GoodProps) => item !== action.payload
-        );
-        state.isRefreshing = false;
-        state.error = false;
-      })
+      .addCase(
+        deleteFromCart.fulfilled,
+        (state: RootState, action: PayloadAction<string>) => {
+          state.user.goodsInCart = state.user.goodsInCart.filter(
+            (item: string) => item !== action.payload
+          );
+          state.isRefreshing = false;
+          state.error = false;
+        }
+      )
       .addCase(deleteFromCart.rejected, handleRejected)
       .addCase(clearCart.pending, handlePending)
-      .addCase(clearCart.fulfilled, (state, action) => {
+      .addCase(clearCart.fulfilled, (state: RootState) => {
         state.user.goodsInCart = [];
         state.isRefreshing = false;
         state.error = false;
