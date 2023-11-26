@@ -38,7 +38,3 @@ export interface UserProps {
   role: string;
   goodsInCart: GoodProps[];
 }
-
-// export interface CartProps {
-//   _id: string;
-// }

@@ -14,6 +14,8 @@ import GoodsInCartIndicator from "./GoodsInCartIndicator";
 import CartList from "./CartList";
 import CartItem from "./CartItem";
 import OrderModal from "./OrderModal";
+import AdminPageClient from "./AdminPageClient";
+import ImageUpload from "./ImageUpload";
 
 export {
   NavBar,
@@ -32,4 +34,6 @@ export {
   CartList,
   CartItem,
   OrderModal,
+  AdminPageClient,
+  ImageUpload,
 };
