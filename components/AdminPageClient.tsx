@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikState } from "formik";
 import * as yup from "yup";
 import { CustomBtn, ImageUpload } from ".";
+import { useRouter } from "next/navigation";
+import { UserProps } from "@/types";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 interface InitialStateProps {
   title: string;
@@ -33,6 +37,12 @@ const schema = yup.object().shape({
 
 const AdminPageClient = () => {
   const [description, setDescription] = useState<string>("");
+  const user: UserProps = useSelector((state: RootState) => state.auth.user);
+  const router = useRouter();
+
+  useEffect(() => {
+    user.role !== "admin" ? router.replace("/") : router.replace("/admin");
+  }, [router, user.role]);
 
   const initialValues: InitialStateProps = {
     title: "",
