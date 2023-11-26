@@ -2,9 +2,13 @@
 
 import React from "react";
 import { useGlobalContext } from "@/app/context/store";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { UserProps } from "@/types";
 
 const AddToCartBtn = ({ id }: { id: string }) => {
   const { cart, setCart } = useGlobalContext();
+  const user: UserProps = useSelector((state: RootState) => state.auth.user);
 
   const handleAddCartClick = () => {
     const isInCart = cart.includes(id);
@@ -17,13 +21,15 @@ const AddToCartBtn = ({ id }: { id: string }) => {
   };
 
   return (
-    <button
-      type="button"
-      className="flex justify-center items-center py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl mr-10"
-      onClick={handleAddCartClick}
-    >
-      Add to Cart
-    </button>
+    user.role !== "admin" && (
+      <button
+        type="button"
+        className="flex justify-center items-center py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl mr-10"
+        onClick={handleAddCartClick}
+      >
+        Add to Cart
+      </button>
+    )
   );
 };
 

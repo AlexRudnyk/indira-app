@@ -38,3 +38,18 @@ export interface UserProps {
   role: string;
   goodsInCart: GoodProps[];
 }
+
+export interface AddGoodProps {
+  title: string;
+  text: string;
+  description: string;
+  photoURL: string;
+  price: number;
+}
+
+export interface EditGoodProps {
+  title?: string;
+  text?: string;
+  description?: string;
+  price?: number;
+}
