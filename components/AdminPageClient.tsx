@@ -103,7 +103,7 @@ const AdminPageClient = () => {
                 value={description}
                 type="text"
                 name="description"
-                className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
+                className="p-2 mb-[30px] border-b-2 border-gray-300 w-full resize-none"
                 placeholder="Please enter description"
                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                   setFieldValue("description", e.currentTarget.value);

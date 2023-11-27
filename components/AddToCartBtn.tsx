@@ -4,11 +4,10 @@ import React from "react";
 import { useGlobalContext } from "@/app/context/store";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { UserProps } from "@/types";
 
 const AddToCartBtn = ({ id }: { id: string }) => {
   const { cart, setCart } = useGlobalContext();
-  const user: UserProps = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const handleAddCartClick = () => {
     const isInCart = cart.includes(id);

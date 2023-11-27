@@ -76,7 +76,7 @@ const ImageUpload = ({ setFieldValue }: FormikProps) => {
   };
 
   return (
-    <div>
+    <div className="mb-[30px]">
       <div>
         <div>
           <input
@@ -88,32 +88,49 @@ const ImageUpload = ({ setFieldValue }: FormikProps) => {
             accept="image/*"
           />
           {!preview && (
-            <label htmlFor="hidden-input">
-              <p>Upload_file</p>
+            <label
+              htmlFor="hidden-input"
+              className="flex cursor-pointer justify-center mb-[30px] py-5 border-b-2 border-gray-300"
+            >
+              <div className="flex justify-center items-center py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl">
+                Upload file
+              </div>
             </label>
           )}
           {preview && (
             <div>
-              <div>
-                <Image src={preview} alt="preview" width={70} height={70} />
+              <div className="relative">
                 <Image
-                  src={Success}
-                  alt="Success"
-                  width={20}
-                  height={20}
-                  //   $isUploaded={isUploaded}
+                  src={preview}
+                  alt="preview"
+                  width={300}
+                  height={300}
+                  className="mb-5"
                 />
+                {isUploaded && (
+                  <Image
+                    src={Success}
+                    alt="Success"
+                    width={20}
+                    height={20}
+                    className="absolute top-0 right-[-30px]"
+                  />
+                )}
               </div>
-              <div>
+              <div className="flex justify-between">
                 <button
                   type="button"
                   onClick={uploadImage}
                   disabled={isUploaded}
-                  className=""
+                  className="flex justify-center items-center py-3 px-6 outline-none transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl"
                 >
                   Upload
                 </button>
-                <button type="button" onClick={handleResetClick} className="">
+                <button
+                  type="button"
+                  onClick={handleResetClick}
+                  className="flex justify-center items-center py-3 px-6 outline-none transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl"
+                >
                   Reset
                 </button>
               </div>

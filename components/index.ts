@@ -18,6 +18,7 @@ import AdminPageClient from "./AdminPageClient";
 import ImageUpload from "./ImageUpload";
 import HomePageClient from "./HomePageClient";
 import AdminGoodItem from "./AdminGoodItem";
+import ModalEditGood from "./ModalEditGood";
 
 export {
   NavBar,
@@ -40,4 +41,5 @@ export {
   ImageUpload,
   HomePageClient,
   AdminGoodItem,
+  ModalEditGood,
 };
