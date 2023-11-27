@@ -17,6 +17,7 @@ import OrderModal from "./OrderModal";
 import AdminPageClient from "./AdminPageClient";
 import ImageUpload from "./ImageUpload";
 import HomePageClient from "./HomePageClient";
+import AdminGoodItem from "./AdminGoodItem";
 
 export {
   NavBar,
@@ -38,4 +39,5 @@ export {
   AdminPageClient,
   ImageUpload,
   HomePageClient,
+  AdminGoodItem,
 };

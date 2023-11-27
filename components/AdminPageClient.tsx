@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikState } from "formik";
 import * as yup from "yup";
-import { CustomBtn, ImageUpload } from ".";
+import { AdminGoodItem, CustomBtn, ImageUpload } from ".";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import { addGoods } from "@/redux/goods/operations";
+import { GoodProps } from "@/types";
 
 interface InitialStateProps {
   title: string;
@@ -38,8 +39,10 @@ const schema = yup.object().shape({
 const AdminPageClient = () => {
   const [description, setDescription] = useState<string>("");
   const user = useSelector((state: RootState) => state.auth.user);
+  const allGoods = useSelector((state: RootState) => state.goods.goods);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  const allGoodsReversed = [...allGoods].reverse();
 
   useEffect(() => {
     user.role !== "admin" ? router.replace("/") : router.replace("/admin");
@@ -70,7 +73,7 @@ const AdminPageClient = () => {
         onSubmit={handleSubmit}
       >
         {({ values, setFieldValue }) => (
-          <Form>
+          <Form className="w-[300px] mr-[100px]">
             <ImageUpload setFieldValue={setFieldValue} />
             <div className="relative">
               <Field
@@ -132,7 +135,11 @@ const AdminPageClient = () => {
           </Form>
         )}
       </Formik>
-      <ul></ul>
+      <ul className="flex flex-col w-full">
+        {allGoodsReversed.map((good: GoodProps) => (
+          <AdminGoodItem key={good._id} good={good} />
+        ))}
+      </ul>
     </div>
   );
 };

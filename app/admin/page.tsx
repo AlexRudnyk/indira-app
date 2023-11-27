@@ -3,7 +3,7 @@ import React from "react";
 
 const AdminPage = () => {
   return (
-    <div className="w-[1280px] ml-auto mr-auto p-5 mt-[100px]">
+    <div className="w-[1280px] ml-auto mr-auto p-5 mt-[120px]">
       <AdminPageClient />
     </div>
   );

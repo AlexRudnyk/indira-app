@@ -36,7 +36,7 @@ const CartItem = ({
   }, [count, getTotalSum, good.price, good.title, goodInfo]);
 
   return (
-    <li className="mb-8">
+    <li className="mb-8 last:mb-0">
       <div className="flex rounded-lg shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] p-1">
         <Image
           src={good.photoURL}
