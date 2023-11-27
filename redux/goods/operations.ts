@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AddGoodProps, EditGoodProps, GoodProps } from "@/types";
+import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "https://indira-backend.vercel.app";
 
@@ -33,7 +34,7 @@ export const addGoods = createAsyncThunk(
   async (credentials: AddGoodProps, thunkAPI) => {
     try {
       const { data } = await axios.post("/api/goods/addgood", credentials);
-      //   toast.success(i18n.t("Item_added"));
+      toast.success("Item is added");
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data);

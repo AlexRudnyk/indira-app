@@ -63,7 +63,7 @@ const AdminPageClient = () => {
   };
 
   return (
-    <div>
+    <div className="flex">
       <Formik
         initialValues={initialValues}
         validationSchema={schema}

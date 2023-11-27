@@ -16,6 +16,7 @@ import CartItem from "./CartItem";
 import OrderModal from "./OrderModal";
 import AdminPageClient from "./AdminPageClient";
 import ImageUpload from "./ImageUpload";
+import HomePageClient from "./HomePageClient";
 
 export {
   NavBar,
@@ -36,4 +37,5 @@ export {
   OrderModal,
   AdminPageClient,
   ImageUpload,
+  HomePageClient,
 };
