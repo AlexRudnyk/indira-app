@@ -87,7 +87,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
           onSubmit={handleSubmit}
         >
           {({ values, setFieldValue }) => (
-            <Form className="w-[300px] mr-[100px]">
+            <Form className="w-[300px] flex flex-col">
               <div className="relative">
                 <Field
                   type="text"
