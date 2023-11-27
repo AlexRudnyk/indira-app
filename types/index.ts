@@ -69,3 +69,9 @@ export interface AuthState {
   isRefreshing: boolean;
   error: any | boolean;
 }
+
+export interface CommentProps {
+  _id?: string;
+  text: string;
+  reply?: string;
+}

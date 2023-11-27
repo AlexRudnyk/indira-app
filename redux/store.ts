@@ -12,6 +12,7 @@ import {
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import authReducer from "./auth/slice";
 import goodsReducer from "./goods/slice";
+import commentsReducer from "./comments/slice";
 
 const createNoopStorage = () => {
   return {
@@ -40,7 +41,8 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  goods: goodsReducer, // Add goodsReducer here
+  goods: goodsReducer,
+  comments: commentsReducer,
 });
 
 export const store = configureStore({

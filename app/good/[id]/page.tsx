@@ -1,6 +1,11 @@
 import { fetchSpecificGood } from "@/utils";
 import { GoodProps } from "@/types";
-import { AddToCartBtn, ReadCommentsBtn, WriteCommentBtn } from "@/components";
+import {
+  AddToCartBtn,
+  CommentsBlock,
+  ReadCommentsBtn,
+  WriteCommentBtn,
+} from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchGoods } from "@/utils";
@@ -36,8 +41,7 @@ const Good = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <div className="flex items-center">
-            <ReadCommentsBtn />
-            <WriteCommentBtn />
+            <CommentsBlock goodId={good._id} />
           </div>
         </div>
       </div>
