@@ -6,7 +6,7 @@ const Cart = async () => {
   const allGoods = await fetchGoods();
 
   return (
-    <div className="w-[1280px] ml-auto mr-auto p-5 mt-[120px]">
+    <div className="w-[1280px] mx-auto p-5">
       <CartList allGoods={allGoods} />
     </div>
   );

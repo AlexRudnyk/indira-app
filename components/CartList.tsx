@@ -92,7 +92,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
 
   return cart.length ? (
     <>
-      <ul className="mb-20">
+      <ul className="mb-20 mt-[140px]">
         {goodsArray.map((good: GoodProps) => (
           <CartItem
             key={good._id}
@@ -102,7 +102,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
           />
         ))}
       </ul>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center pb-10">
         <p className="text-xl mr-6 flex justify-center items-baseline">
           Your order total Sum is:
           <span className="text-3xl font-bold px-4 inline-block w-[100px] text-center">
@@ -125,7 +125,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
       )}
     </>
   ) : (
-    <div className="flex flex-col w-full justify-center items-center mt-11">
+    <div className="flex flex-col w-full h-screen items-center justify-center">
       <p className="font-bold text-5xl mb-28">Your cart is empty</p>
       <Link href="/">
         <CustomBtn
