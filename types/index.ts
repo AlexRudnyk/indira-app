@@ -75,6 +75,7 @@ export interface CommentProps {
   userName?: string;
   text: string;
   good?: string;
+  reply?: string;
   createdAt?: string;
   updatedAt?: string;
 }

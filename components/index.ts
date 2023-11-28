@@ -22,6 +22,7 @@ import ModalEditGood from "./ModalEditGood";
 import CommentsBlock from "./CommentsBlock";
 import CommentsList from "./CommentsList";
 import CommentItem from "./CommentItem";
+import ReplyModal from "./ReplyModal";
 
 export {
   NavBar,
@@ -48,4 +49,5 @@ export {
   CommentsBlock,
   CommentsList,
   CommentItem,
+  ReplyModal,
 };
