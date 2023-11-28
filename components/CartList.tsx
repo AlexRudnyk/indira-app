@@ -73,14 +73,13 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
       );
       localStorage.removeItem("cart");
       setCart([]);
-      //   return data;
     } catch (error: any) {
       console.log(error.message);
     }
   };
 
   const handleMakeOrder = (): void => {
-    if (isLoggedIn) {
+    if (isLoggedIn && user.name && user.phone && user.email) {
       handleOrderSubmit({
         name: user.name,
         phone: user.phone,

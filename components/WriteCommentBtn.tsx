@@ -1,16 +1,11 @@
 "use client";
 
-import { useState } from "react";
-
 const WriteCommentBtn = ({
   toggleModal,
 }: {
   toggleModal: (value: boolean) => void;
 }) => {
-  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
   const handleToggle = () => {
-    // setIsModalOpen(!isModalOpen);
     toggleModal(true);
   };
 

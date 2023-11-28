@@ -7,9 +7,11 @@ import * as yup from "yup";
 import { useFormStatus } from "react-dom";
 import { CommentProps } from "@/types";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, RootState } from "@/redux/store";
 import { addComment } from "@/redux/comments/operations";
 import { AiOutlineClose } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const schema = yup.object().shape({
   text: yup
@@ -33,12 +35,15 @@ function SubmitButton() {
 }
 
 const CommentsBlock = ({ goodId }: { goodId: string }) => {
-  const [isCommentModalOpen, setIsCommentModalOpen] = useState<boolean>(false);
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState<boolean>();
   const [comment, setComment] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   const handleToggleModal = (value: boolean) => {
-    setIsCommentModalOpen(value);
+    isLoggedIn
+      ? setIsCommentModalOpen(value)
+      : toast.warn("Please sign in to leave a comment");
   };
 
   useEffect(() => {
@@ -51,7 +56,7 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
     return () => {
       window.removeEventListener("keydown", onEscClick);
     };
-  }, [isCommentModalOpen]);
+  }, [setIsCommentModalOpen]);
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.currentTarget === e.target) setIsCommentModalOpen(false);
@@ -92,7 +97,7 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
               onSubmit={handleSubmit}
             >
               {({ values, setFieldValue }) => (
-                <Form className="w-[300px] flex flex-col">
+                <Form className="w-full flex flex-col">
                   <div className="relative">
                     <Field
                       as="textarea"

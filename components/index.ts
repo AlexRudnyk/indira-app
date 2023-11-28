@@ -20,6 +20,8 @@ import HomePageClient from "./HomePageClient";
 import AdminGoodItem from "./AdminGoodItem";
 import ModalEditGood from "./ModalEditGood";
 import CommentsBlock from "./CommentsBlock";
+import CommentsList from "./CommentsList";
+import CommentItem from "./CommentItem";
 
 export {
   NavBar,
@@ -44,4 +46,6 @@ export {
   AdminGoodItem,
   ModalEditGood,
   CommentsBlock,
+  CommentsList,
+  CommentItem,
 };

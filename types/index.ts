@@ -72,6 +72,9 @@ export interface AuthState {
 
 export interface CommentProps {
   _id?: string;
+  userName?: string;
   text: string;
-  reply?: string;
+  good?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }

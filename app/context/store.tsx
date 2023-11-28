@@ -13,12 +13,16 @@ interface ContextProps {
   cart: string[];
   setCart: Dispatch<SetStateAction<string[]>>;
   handleDeleteFromCart: (id: string) => void;
+  isCommentOpen: boolean;
+  setIsCommentOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
   cart: [],
   setCart: (): void => {},
   handleDeleteFromCart: (): void => {},
+  isCommentOpen: false,
+  setIsCommentOpen: (): void => {},
 });
 
 export const GlobalContextProvider = ({
@@ -28,6 +32,7 @@ export const GlobalContextProvider = ({
 }) => {
   const initialState: string[] = [];
   const [cart, setCart] = useState<string[]>(initialState);
+  const [isCommentOpen, setIsCommentOpen] = useState(false);
 
   const handleDeleteFromCart = (id: string): void => {
     const filteredCart = cart.filter((item: string) => item !== id);
@@ -49,7 +54,15 @@ export const GlobalContextProvider = ({
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ cart, setCart, handleDeleteFromCart }}>
+    <GlobalContext.Provider
+      value={{
+        cart,
+        setCart,
+        handleDeleteFromCart,
+        isCommentOpen,
+        setIsCommentOpen,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
