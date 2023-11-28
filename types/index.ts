@@ -16,6 +16,7 @@ export interface GoodProps {
   description: string;
   photoURL: string;
   price: number;
+  comments?: string[];
 }
 
 export interface RegCredentialsProps {

@@ -1,9 +1,9 @@
 "use client";
 
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, RootState } from "@/redux/store";
 import { EditGoodProps, GoodProps } from "@/types";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImPencil, ImBin2 } from "react-icons/im";
 import { useDispatch } from "react-redux";
 import { deleteGood, editGood } from "@/redux/goods/operations";
@@ -35,9 +35,12 @@ const AdminGoodItem = ({ good }: AdminGoodItemProps) => {
           alt="Admin good item"
           className="mr-[30px] rounded-xl"
         />
-        <p className="w-[450px] text-lg font-semibold mr-[50px]">
-          {good.title}
-        </p>
+        <div className="">
+          <p className="w-[450px] text-lg font-semibold mr-[50px]">
+            {good.title}
+          </p>
+          <p>Comments ({good.comments?.length})</p>
+        </div>
         <p className="mr-[80px]">{good.price} UAH</p>
         <button
           type="button"

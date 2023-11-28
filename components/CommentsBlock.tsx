@@ -36,7 +36,6 @@ function SubmitButton() {
 
 const CommentsBlock = ({ goodId }: { goodId: string }) => {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState<boolean>();
-  // const [comment, setComment] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
@@ -65,7 +64,6 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
   const handleSubmit = (values: CommentProps) => {
     dispatch(addComment({ id: goodId, values }));
     setIsCommentModalOpen(false);
-    // setComment("");
   };
 
   const initialValues: CommentProps = {
@@ -101,14 +99,12 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
                   <div className="relative">
                     <Field
                       as="textarea"
-                      // value={comment}
                       type="text"
                       name="text"
                       className="p-2 mb-[30px] border-b-2 border-gray-300 w-full resize-none"
                       placeholder="Please enter your comment"
                       onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                         setFieldValue("text", e.currentTarget.value);
-                        // setComment(e.currentTarget.value);
                       }}
                     />
                     <div className="absolute top-10 text-red-600">
