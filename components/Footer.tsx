@@ -26,7 +26,12 @@ const Footer = () => {
               <div className="mr-4">
                 <FiPhoneCall size={20} />
               </div>
-              <a href="tel:+380672797808" className="p-3">
+              <a
+                href="tel:+380672797808"
+                className="p-3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 +380672797808
               </a>
             </div>
@@ -37,6 +42,8 @@ const Footer = () => {
               <a
                 href="https://www.instagram.com/indira_soap/"
                 className="text-lg p-3"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 My Instagram
               </a>
@@ -45,7 +52,12 @@ const Footer = () => {
               <div className="mr-4">
                 <LiaTelegramPlane size={20} />
               </div>
-              <a href="https://t.me/indira_soap" className="text-lg p-3">
+              <a
+                href="https://t.me/indira_soap"
+                className="text-lg p-3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 My Telegram
               </a>
             </div>
@@ -56,6 +68,8 @@ const Footer = () => {
               <a
                 href="https://m.facebook.com/profile.php/?id=100041551331532"
                 className="text-lg p-3"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 My Facebook
               </a>
@@ -67,6 +81,8 @@ const Footer = () => {
               <a
                 href="https://www.tiktok.com/@indira_soap?_t=8hkJLs29ZAr&_r=1"
                 className="text-lg p-3"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 My TikTok
               </a>
