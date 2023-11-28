@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { UserProps } from "@/types";
 
 const great_vibes = Great_Vibes({
   subsets: ["latin"],
@@ -21,7 +20,7 @@ const great_vibes = Great_Vibes({
 
 const NavBar = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
-  const user: UserProps = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] fixed top-0 left-0 w-screen bg-white z-10">

@@ -23,6 +23,7 @@ import CommentsBlock from "./CommentsBlock";
 import CommentsList from "./CommentsList";
 import CommentItem from "./CommentItem";
 import ReplyModal from "./ReplyModal";
+import Footer from "./Footer";
 
 export {
   NavBar,
@@ -50,4 +51,5 @@ export {
   CommentsList,
   CommentItem,
   ReplyModal,
+  Footer,
 };

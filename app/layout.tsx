@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { NavBar, ReduxWrapper } from "@/components";
+import { Footer, NavBar, ReduxWrapper } from "@/components";
 import Providers from "@/redux/Provider";
 import PersistGates from "@/redux/PersistGate";
 import { GlobalContextProvider } from "./context/store";
@@ -26,6 +26,7 @@ export default function RootLayout({
               <GlobalContextProvider>
                 <NavBar />
                 {children}
+                <Footer />
               </GlobalContextProvider>
             </ReduxWrapper>
           </PersistGates>
