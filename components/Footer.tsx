@@ -4,6 +4,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { BsInstagram } from "react-icons/bs";
 import { LiaTelegramPlane } from "react-icons/lia";
 import { SiFacebook } from "react-icons/si";
+import { FaTiktok } from "react-icons/fa";
 
 const great_vibes = Great_Vibes({
   subsets: ["latin"],
@@ -57,6 +58,17 @@ const Footer = () => {
                 className="text-lg p-3"
               >
                 My Facebook
+              </a>
+            </div>
+            <div className="flex items-center">
+              <div className="mr-4">
+                <FaTiktok size={20} />
+              </div>
+              <a
+                href="https://www.tiktok.com/@indira_soap?_t=8hkJLs29ZAr&_r=1"
+                className="text-lg p-3"
+              >
+                My TikTok
               </a>
             </div>
           </div>
