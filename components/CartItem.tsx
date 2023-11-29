@@ -43,25 +43,27 @@ const CartItem = ({
           alt="good in cart"
           width={120}
           height={120}
-          className="mr-6 rounded-lg"
+          className="mr-6 rounded-lg mo:w-[100px] mo:h-[100px] sm:w-[100px] sm:h-[100px]"
         />
-        <div className="w-[600px]">
+        <div className="w-[600px] mo:hidden sm:hidden md:flex md:items-center lg:block">
           <h1 className="text-xl font-bold mb-3">{good.title}</h1>
-          <p>{good.text}</p>
+          <p className="md:hidden lg:block">{good.text}</p>
         </div>
         <div className="flex items-center w-auto ml-auto mr-10">
-          <p className="mr-8">
+          <p className="mr-8 mo:mr-4 sm:mr-4">
             Price: <span className="font-bold">{good.price}</span> UAH
           </p>
           <button
             type="button"
             onClick={() => setCount((prev) => prev - 1)}
             disabled={count <= 1}
-            className="bg-gray-300 w-[40px] h-[40px]  rounded-md flex justify-center items-center transition ease-in-out duration-100 hover:scale-110"
+            className="bg-gray-300 w-[40px] h-[40px] rounded-md flex justify-center items-center transition ease-in-out duration-100 hover:scale-110"
           >
             <span className="text-2xl">-</span>
           </button>
-          <p className="text-2xl w-[60px] text-center">{count}</p>
+          <p className="text-2xl mo:text-xl sm:text-xl w-[60px] text-center">
+            {count}
+          </p>
           <button
             type="button"
             onClick={() => setCount((prev) => prev + 1)}
@@ -71,7 +73,7 @@ const CartItem = ({
           </button>
           <button
             type="button"
-            className="p-2 ml-6"
+            className="p-2 mo:ml-4 sm:ml-4"
             onClick={() => handleDeleteFromCart(good._id)}
           >
             <ImBin2 />

@@ -67,10 +67,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
     };
 
     try {
-      const { data } = await axios.post(
-        "https://indira-backend.vercel.app/api/users/order",
-        mailBody
-      );
+      axios.post("https://indira-backend.vercel.app/api/users/order", mailBody);
       localStorage.removeItem("cart");
       setCart([]);
     } catch (error: any) {
@@ -102,8 +99,8 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
           />
         ))}
       </ul>
-      <div className="flex justify-center items-center pb-10">
-        <p className="text-xl mr-6 flex justify-center items-baseline">
+      <div className="flex flex-col md:flex-row justify-center items-center pb-10">
+        <p className="text-xl md:mr-6 flex justify-center items-baseline mb-6 md:mb-0">
           Your order total Sum is:
           <span className="text-3xl font-bold px-4 inline-block w-[100px] text-center">
             {totalSum}
@@ -126,7 +123,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
     </>
   ) : (
     <div className="flex flex-col w-full h-screen items-center justify-center">
-      <p className="font-bold text-5xl mb-28">Your cart is empty</p>
+      <p className="font-bold text-4xl md:text-5xl mb-28">Your cart is empty</p>
       <Link href="/">
         <CustomBtn
           btnType="button"
