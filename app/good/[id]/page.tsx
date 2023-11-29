@@ -1,12 +1,6 @@
 import { fetchSpecificGood } from "@/utils";
 import { GoodProps } from "@/types";
-import {
-  AddToCartBtn,
-  CommentsBlock,
-  CommentsList,
-  ReadCommentsBtn,
-  WriteCommentBtn,
-} from "@/components";
+import { AddToCartBtn, CommentsBlock, CommentsList } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchGoods } from "@/utils";
@@ -17,17 +11,17 @@ const Good = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <div className="w-[1280px] ml-auto mr-auto p-6">
-        <div className="mt-[120px] flex rounded-2xl mb-7">
+      <div className="mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] mx-auto p-5 mt-[120px]">
+        <div className="flex flex-col md:flex-row rounded-2xl mb-7">
           <Image
             src={good.photoURL}
-            width={320}
-            height={320}
+            width={400}
+            height={400}
             alt="good"
-            className="rounded-2xl mr-8 w-[400px] h-[400px]"
+            className="rounded-2xl mr-0 mb-8 md:mb-0 md:mr-8 w-full md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]"
           />
           <div className="flex flex-col justify-between">
-            <div>
+            <div className="md:w-[400px] lg:w-full">
               <h1 className="text-3xl font-bold mb-[30px]">{good.title}</h1>
               <p className="mb-[20px]">{good.text}</p>
               <p className="mb-[20px]">{good.description}</p>
@@ -52,7 +46,7 @@ const Good = async ({ params }: { params: { id: string } }) => {
           <p className="self-center mb-[40px] text-2xl font-bold">
             You may also like:
           </p>
-          <div className="w=full h-[200px] overflow-x-hidden">
+          <div className="w-full mo:h-[70px] sm:h-[70px] md:h-[120px] lg:h-[200px] overflow-x-hidden">
             <ul className="flex whitespace-nowrap animate-slider will-change-transform w-[200%] hover:pause">
               {allGoods.length > 0 &&
                 allGoods

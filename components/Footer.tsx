@@ -5,6 +5,7 @@ import { BsInstagram } from "react-icons/bs";
 import { LiaTelegramPlane } from "react-icons/lia";
 import { SiFacebook } from "react-icons/si";
 import { FaTiktok } from "react-icons/fa";
+import Link from "next/link";
 
 const great_vibes = Great_Vibes({
   subsets: ["latin"],
@@ -22,71 +23,58 @@ const Footer = () => {
         </h1>
         <div className="mb-3">
           <div className="flex flex-col md:flex-row justify-around">
-            <div className="flex items-center">
-              <div className="md:mr-0 lg:mr-4">
+            <Link href="tel:+380672797808" className="flex items-center">
+              <div className="mr-4">
                 <FiPhoneCall size={20} />
               </div>
-              <a
-                href="tel:+380672797808"
-                className="md:text-sm lg:text-base p-3 md:p-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <p className="md:text-sm lg:text-base p-3 md:p-2">
                 +380672797808
-              </a>
-            </div>
-            <div className="flex items-center">
+              </p>
+            </Link>
+            <Link
+              href="https://www.instagram.com/indira_soap/"
+              className="flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="mr-4">
                 <BsInstagram size={20} />
               </div>
-              <a
-                href="https://www.instagram.com/indira_soap/"
-                className="md:text-sm lg:text-lg p-3 md:p-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                My Instagram
-              </a>
-            </div>
-            <div className="flex items-center">
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">My Instagram</p>
+            </Link>
+            <Link
+              href="https://t.me/indira_soap"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
               <div className="mr-4">
                 <LiaTelegramPlane size={20} />
               </div>
-              <a
-                href="https://t.me/indira_soap"
-                className="md:text-sm lg:text-lg p-3 md:p-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                My Telegram
-              </a>
-            </div>
-            <div className="flex items-center">
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">My Telegram</p>
+            </Link>
+            <Link
+              href="https://m.facebook.com/sheina.anna?refid=52&__tn__=C-R"
+              className="flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="mr-4">
                 <SiFacebook size={20} />
               </div>
-              <a
-                href="https://m.facebook.com/sheina.anna?refid=52&__tn__=C-R"
-                className="md:text-sm lg:text-lg p-3 md:p-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                My Facebook
-              </a>
-            </div>
-            <div className="flex items-center">
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">My Facebook</p>
+            </Link>
+            <Link
+              href="https://www.tiktok.com/@indira_soap?_t=8hkJLs29ZAr&_r=1"
+              className="flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="mr-4">
                 <FaTiktok size={20} />
               </div>
-              <a
-                href="https://www.tiktok.com/@indira_soap?_t=8hkJLs29ZAr&_r=1"
-                className="md:text-sm lg:text-lg p-3 md:p-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                My TikTok
-              </a>
-            </div>
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">My TikTok</p>
+            </Link>
           </div>
         </div>
         <div className="border-t border-gray-300">
