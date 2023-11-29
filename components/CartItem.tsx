@@ -43,7 +43,7 @@ const CartItem = ({
           alt="good in cart"
           width={120}
           height={120}
-          className="mr-6 rounded-lg mo:w-[100px] mo:h-[100px] sm:w-[100px] sm:h-[100px]"
+          className="mr-3 md:mr-6 rounded-lg mo:w-[90px] mo:h-[90px] sm:w-[90px] sm:h-[90px]"
         />
         <div className="w-[600px] mo:hidden sm:hidden md:flex md:items-center lg:block">
           <h1 className="text-xl font-bold mb-3">{good.title}</h1>
