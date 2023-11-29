@@ -23,7 +23,7 @@ const UserNav = ({ closeAfterClick, isBurgerMenuOpen }: UserNavProps) => {
       <CustomBtn
         title="SignOut"
         btnType="button"
-        containerStyles="bg-[var(--primary)] text-white rounded-2xl md:mr-3 mo:mb-5 sm:mb-5"
+        containerStyles="bg-[var(--primary)] text-white rounded-2xl md:mr-3 mo:mb-5 sm:mb-5 md:mb-0"
         handleClick={() => {
           if (isBurgerMenuOpen && closeAfterClick) {
             dispatch(logout());

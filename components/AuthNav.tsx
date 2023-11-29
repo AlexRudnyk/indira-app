@@ -8,7 +8,7 @@ const AuthNav = ({ closeAfterClick }: { closeAfterClick?: () => void }) => {
         <CustomBtn
           title="SignIn"
           btnType="button"
-          containerStyles="bg-[var(--primary)] text-white rounded-2xl mo:mb-5 sm:mb-5 md:mr-3"
+          containerStyles="bg-[var(--primary)] text-white rounded-2xl mo:mb-5 sm:mb-5 md:mb-0 md:mr-3"
           handleClick={closeAfterClick}
         />
       </Link>
