@@ -16,7 +16,7 @@ const HomePageClient = () => {
   }, [dispatch]);
 
   return (
-    <ul className="w-[1280px] mx-auto p-5 pb-10 grid grid-cols-3 gap-9 mt-[100px]">
+    <ul className="mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] mx-auto p-5 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-[100px]">
       {allGoods.length > 0 &&
         allGoods.map((good: GoodProps) => (
           <GoodCard key={good._id} good={good} />

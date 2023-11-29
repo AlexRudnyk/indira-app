@@ -8,7 +8,7 @@ interface GoodCardProps {
 
 const GoodCard = ({ good }: GoodCardProps) => {
   return (
-    <li className="w-[400px] rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] ">
+    <li className="mo:max-w=[440px] sm:w-[440px] md:w-[350px] lg:w-[400px] rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] ">
       <Link
         href={`/good/${good._id}`}
         className="flex flex-col justify-between h-full"
@@ -20,7 +20,7 @@ const GoodCard = ({ good }: GoodCardProps) => {
               alt="good"
               width={400}
               height={400}
-              className="rounded-t-2xl transition ease-in-out hover:scale-105 duration-300"
+              className="rounded-t-2xl transition ease-in-out hover:scale-105 duration-300 w-full"
             />
           </div>
           <div className="p-2">

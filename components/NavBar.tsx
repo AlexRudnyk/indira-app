@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const great_vibes = Great_Vibes({
   subsets: ["latin"],
@@ -24,10 +25,10 @@ const NavBar = () => {
 
   return (
     <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] fixed top-0 left-0 w-screen bg-white z-10">
-      <div className="flex items-center ml-auto mr-auto w-[1280px] h-[96px] p-5 relative justify-between">
+      <div className="flex items-center mx-auto mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] h-[96px] p-5 relative justify-between">
         <Link href="/">
           <span
-            className={`${great_vibes.className} text-5xl text-[var(--primary)]`}
+            className={`${great_vibes.className} text-5xl mo:text-4xl text-[var(--primary)]`}
           >
             Indira
           </span>
@@ -35,10 +36,10 @@ const NavBar = () => {
             src={Mandala}
             alt="logo"
             width={80}
-            className="absolute top-[5px] left-[5px] -z-10 opacity-60"
+            className="absolute top-[5px] mo:top-[10px] left-[5px] -z-10 opacity-60 mo:w-[60px]"
           />
         </Link>
-        <nav className="flex items-center">
+        <nav className="hidden md:flex items-center">
           {isLoggedIn ? <UserNav /> : <AuthNav />}
           {user.role === "admin" ? (
             <Link href="/admin">
@@ -50,7 +51,7 @@ const NavBar = () => {
               <GoodsInCartIndicator />
             </Link>
           ) : (
-            <Link href="/cart" className="relative">
+            <Link href="/cart" className="relative ">
               <CustomBtn
                 title="Cart"
                 btnType="button"
@@ -60,6 +61,20 @@ const NavBar = () => {
             </Link>
           )}
         </nav>
+        <div className="flex items-center md:hidden">
+          {isLoggedIn && <p className="mr-4">Hello, {user.name}</p>}
+          <Link href="/cart" className="relative mr-4">
+            <CustomBtn
+              title="Cart"
+              btnType="button"
+              containerStyles="bg-[var(--primary)] text-white rounded-2xl"
+            />
+            <GoodsInCartIndicator />
+          </Link>
+          <button type="button" className="p-2">
+            <GiHamburgerMenu size={30} />
+          </button>
+        </div>
       </div>
     </header>
   );

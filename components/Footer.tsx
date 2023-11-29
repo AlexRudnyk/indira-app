@@ -14,21 +14,21 @@ const great_vibes = Great_Vibes({
 const Footer = () => {
   return (
     <footer className="w-screen border-t-2 border-gray-300">
-      <div className="w-[1280px] mx-auto p-5 flex flex-col">
+      <div className="mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] mx-auto p-5 flex flex-col">
         <h1
-          className={`${great_vibes.className} text-7xl text-[var(--primary)] font-semibold mb-5 self-center`}
+          className={`${great_vibes.className} mo:text-3xl sm:text-4xl md:text-7xl text-[var(--primary)] font-semibold mb-5 self-center`}
         >
           Every day has it &#39;s own miracle
         </h1>
         <div className="mb-3">
-          <div className="flex justify-around">
+          <div className="flex flex-col md:flex-row justify-around">
             <div className="flex items-center">
-              <div className="mr-4">
+              <div className="md:mr-0 lg:mr-4">
                 <FiPhoneCall size={20} />
               </div>
               <a
                 href="tel:+380672797808"
-                className="p-3"
+                className="md:text-sm lg:text-base p-3 md:p-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -41,7 +41,7 @@ const Footer = () => {
               </div>
               <a
                 href="https://www.instagram.com/indira_soap/"
-                className="text-lg p-3"
+                className="md:text-sm lg:text-lg p-3 md:p-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -54,7 +54,7 @@ const Footer = () => {
               </div>
               <a
                 href="https://t.me/indira_soap"
-                className="text-lg p-3"
+                className="md:text-sm lg:text-lg p-3 md:p-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -66,8 +66,8 @@ const Footer = () => {
                 <SiFacebook size={20} />
               </div>
               <a
-                href="https://m.facebook.com/profile.php/?id=100041551331532"
-                className="text-lg p-3"
+                href="https://m.facebook.com/sheina.anna?refid=52&__tn__=C-R"
+                className="md:text-sm lg:text-lg p-3 md:p-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -80,7 +80,7 @@ const Footer = () => {
               </div>
               <a
                 href="https://www.tiktok.com/@indira_soap?_t=8hkJLs29ZAr&_r=1"
-                className="text-lg p-3"
+                className="md:text-sm lg:text-lg p-3 md:p-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >

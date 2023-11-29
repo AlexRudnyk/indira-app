@@ -10,6 +10,12 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      mo: { max: "479.98px" },
+      sm: "480px",
+      md: "768px",
+      lg: "1024px",
+    },
     extend: {
       keyframes: {
         marquee: {
