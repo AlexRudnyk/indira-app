@@ -33,18 +33,20 @@ const AdminGoodItem = ({ good }: AdminGoodItemProps) => {
           width={100}
           height={100}
           alt="Admin good item"
-          className="mr-[30px] rounded-xl"
+          className="mo:mr-[10px] sm:mr-[10px] md:mr-[10px] lg:mr-[30px] rounded-xl"
         />
-        <div className="">
-          <p className="w-[450px] text-lg font-semibold mr-[50px]">
+        <div className="md:mr-[10px] lg:mr-[50px]">
+          <p className="md:w-[150px] lg:w-[400px] text-sm md:text-base lg:text-lg md:font-semibold">
             {good.title}
           </p>
-          <p>Comments ({good.comments?.length})</p>
+          <p className="text-sm md:text-base">
+            Comments ({good.comments?.length})
+          </p>
         </div>
-        <p className="mr-[80px]">{good.price} UAH</p>
+        <p className="md:mr-[10px] lg:mr-[80px]">{good.price} UAH</p>
         <button
           type="button"
-          className="mr-[40px] p-3"
+          className="mr-[20px] md:mr-[10px] lg:mr-[40px] p-3"
           onClick={handleModalOpenToggle}
         >
           <ImPencil />

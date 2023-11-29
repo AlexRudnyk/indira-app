@@ -66,14 +66,14 @@ const AdminPageClient = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
         {({ values, setFieldValue }) => (
-          <Form className="w-[300px] mr-[100px]">
+          <Form className="mo:max-w-[480px] sm:w-[480px] lg:w-[420px] md:mr-[30px] lg:mr-[50px] flex flex-col mo:mb-[50px] sm:mb-[50px] md:mb-0">
             <ImageUpload setFieldValue={setFieldValue} />
             <div className="relative">
               <Field
@@ -130,7 +130,7 @@ const AdminPageClient = () => {
             <CustomBtn
               btnType="submit"
               title="Submit"
-              containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3"
+              containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3 w-[100px] self-center"
             />
           </Form>
         )}
