@@ -54,6 +54,7 @@ export interface EditGoodProps {
   description?: string;
   price?: number;
 }
+
 export interface AuthState {
   user: {
     _id: null | string;

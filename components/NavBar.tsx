@@ -13,6 +13,8 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const great_vibes = Great_Vibes({
   subsets: ["latin"],
@@ -22,6 +24,11 @@ const great_vibes = Great_Vibes({
 const NavBar = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const user = useSelector((state: RootState) => state.auth.user);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false);
+
+  const handleBurgerMenuToggle = () => {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
+  };
 
   return (
     <header className="shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] fixed top-0 left-0 w-screen bg-white z-10">
@@ -48,7 +55,7 @@ const NavBar = () => {
                 btnType="button"
                 containerStyles="bg-[var(--primary)] text-white rounded-2xl"
               />
-              <GoodsInCartIndicator />
+              {/* <GoodsInCartIndicator /> */}
             </Link>
           ) : (
             <Link href="/cart" className="relative ">
@@ -71,9 +78,40 @@ const NavBar = () => {
             />
             <GoodsInCartIndicator />
           </Link>
-          <button type="button" className="p-2">
+          <button
+            type="button"
+            className="p-2"
+            onClick={handleBurgerMenuToggle}
+          >
             <GiHamburgerMenu size={30} />
           </button>
+          {isBurgerMenuOpen && (
+            <div className="fixed top-0 left-0 flex flex-col justify-center items-center bg-white w-screen p-10">
+              <button
+                type="button"
+                className="absolute top-[10px] right-[10px] p-4 rounded-full z-10"
+                onClick={handleBurgerMenuToggle}
+              >
+                <AiOutlineClose />
+              </button>
+              <Link href="/">
+                <CustomBtn
+                  btnType="button"
+                  title="Home"
+                  containerStyles="bg-[var(--primary)] text-white rounded-2xl mb-5"
+                  handleClick={handleBurgerMenuToggle}
+                />
+              </Link>
+              {isLoggedIn ? (
+                <UserNav
+                  closeAfterClick={handleBurgerMenuToggle}
+                  isBurgerMenuOpen={isBurgerMenuOpen}
+                />
+              ) : (
+                <AuthNav closeAfterClick={handleBurgerMenuToggle} />
+              )}
+            </div>
+          )}
         </div>
       </div>
     </header>

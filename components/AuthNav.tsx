@@ -1,21 +1,23 @@
 import Link from "next/link";
 import { CustomBtn } from ".";
 
-const AuthNav = () => {
+const AuthNav = ({ closeAfterClick }: { closeAfterClick?: () => void }) => {
   return (
     <>
       <Link href="/login">
         <CustomBtn
           title="SignIn"
           btnType="button"
-          containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3"
+          containerStyles="bg-[var(--primary)] text-white rounded-2xl mo:mb-5 sm:mb-5 md:mr-3"
+          handleClick={closeAfterClick}
         />
       </Link>
       <Link href="/register">
         <CustomBtn
           title="SignUp"
           btnType="button"
-          containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3"
+          containerStyles="bg-[var(--primary)] text-white rounded-2xl md:mr-3"
+          handleClick={closeAfterClick}
         />
       </Link>
     </>
