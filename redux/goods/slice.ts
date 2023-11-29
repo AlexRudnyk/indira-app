@@ -1,9 +1,4 @@
-import {
-  ActionReducerMapBuilder,
-  PayloadAction,
-  Slice,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
   addGoods,
   getAllGoods,
@@ -11,8 +6,7 @@ import {
   editGood,
   deleteGood,
 } from "./operations";
-import { AddGoodProps, GoodProps } from "@/types";
-import { RootState } from "../store";
+import { GoodProps } from "@/types";
 
 interface GoodsState {
   goods: GoodProps[];
@@ -26,12 +20,12 @@ const initialState: GoodsState = {
   error: false,
 };
 
-const handlePending = (state: RootState) => {
+const handlePending = (state: GoodsState) => {
   state.isRefreshing = true;
 };
 
 const handleRejected = (
-  state: RootState,
+  state: GoodsState,
   action: PayloadAction<any | boolean>
 ) => {
   state.isRefreshing = false;
@@ -47,7 +41,7 @@ const goodsSlice = createSlice({
       .addCase(getAllGoods.pending, handlePending)
       .addCase(
         getAllGoods.fulfilled,
-        (state: RootState, action: PayloadAction<GoodProps[]>) => {
+        (state: GoodsState, action: PayloadAction<GoodProps[]>) => {
           state.goods = action.payload;
           state.isRefreshing = false;
           state.error = false;
@@ -58,7 +52,7 @@ const goodsSlice = createSlice({
       .addCase(addGoods.pending, handlePending)
       .addCase(
         addGoods.fulfilled,
-        (state: RootState, action: PayloadAction<GoodProps>) => {
+        (state: GoodsState, action: PayloadAction<GoodProps>) => {
           state.goods = [...state.goods, action.payload];
           state.isRefreshing = false;
           state.error = false;
@@ -69,7 +63,7 @@ const goodsSlice = createSlice({
       .addCase(getGoodById.pending, handlePending)
       .addCase(
         getGoodById.fulfilled,
-        (state: RootState, action: PayloadAction<GoodProps>) => {
+        (state: GoodsState, action: PayloadAction<GoodProps>) => {
           state.goods = state.goods.filter(
             (good: GoodProps) => good._id === action.payload._id
           );
@@ -81,7 +75,7 @@ const goodsSlice = createSlice({
       .addCase(editGood.pending, handlePending)
       .addCase(
         editGood.fulfilled,
-        (state: RootState, action: PayloadAction<GoodProps>) => {
+        (state: GoodsState, action: PayloadAction<GoodProps>) => {
           const index = state.goods.findIndex(
             (good: GoodProps) => good._id === action.payload._id
           );
@@ -94,7 +88,7 @@ const goodsSlice = createSlice({
       .addCase(deleteGood.pending, handlePending)
       .addCase(
         deleteGood.fulfilled,
-        (state: RootState, action: PayloadAction<string>) => {
+        (state: GoodsState, action: PayloadAction<string>) => {
           state.goods = state.goods.filter(
             (good: GoodProps) => good._id !== action.payload
           );
