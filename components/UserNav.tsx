@@ -23,7 +23,7 @@ const UserNav = ({ closeAfterClick, isBurgerMenuOpen }: UserNavProps) => {
       <CustomBtn
         title="SignOut"
         btnType="button"
-        containerStyles="bg-[var(--primary)] text-white rounded-2xl md:mr-3 mo:mb-5 sm:mb-5 md:mb-0"
+        containerStyles="bg-[var(--primary)] text-white rounded-2xl md:mr-3 mo:mb-5 sm:mb-5 md:mb-0 mo:w-[100px] sm:w-[100px]"
         handleClick={() => {
           if (isBurgerMenuOpen && closeAfterClick) {
             dispatch(logout());
@@ -38,7 +38,10 @@ const UserNav = ({ closeAfterClick, isBurgerMenuOpen }: UserNavProps) => {
           <CustomBtn
             title="Admin"
             btnType="button"
-            containerStyles="bg-[var(--primary)] text-white rounded-2xl"
+            containerStyles="bg-[var(--primary)] text-white rounded-2xl w-[100px]"
+            handleClick={() => {
+              if (closeAfterClick) closeAfterClick();
+            }}
           />
         </Link>
       )}

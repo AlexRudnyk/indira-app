@@ -55,7 +55,6 @@ const NavBar = () => {
                 btnType="button"
                 containerStyles="bg-[var(--primary)] text-white rounded-2xl"
               />
-              {/* <GoodsInCartIndicator /> */}
             </Link>
           ) : (
             <Link href="/cart" className="relative ">
@@ -70,14 +69,16 @@ const NavBar = () => {
         </nav>
         <div className="flex items-center md:hidden">
           {isLoggedIn && <p className="mr-4">Hello, {user.name}</p>}
-          <Link href="/cart" className="relative mr-4">
-            <CustomBtn
-              title="Cart"
-              btnType="button"
-              containerStyles="bg-[var(--primary)] text-white rounded-2xl"
-            />
-            <GoodsInCartIndicator />
-          </Link>
+          {user.role !== "admin" && (
+            <Link href="/cart" className="relative mr-4">
+              <CustomBtn
+                title="Cart"
+                btnType="button"
+                containerStyles="bg-[var(--primary)] text-white rounded-2xl"
+              />
+              <GoodsInCartIndicator />
+            </Link>
+          )}
           <button
             type="button"
             className="p-2"
@@ -98,7 +99,7 @@ const NavBar = () => {
                 <CustomBtn
                   btnType="button"
                   title="Home"
-                  containerStyles="bg-[var(--primary)] text-white rounded-2xl mb-5"
+                  containerStyles="bg-[var(--primary)] text-white rounded-2xl mb-5 w-[100px]"
                   handleClick={handleBurgerMenuToggle}
                 />
               </Link>

@@ -71,7 +71,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 p-5"
     >
       <div className="relative w-[500px] bg-white p-12 flex justify-center items-center rounded-2xl">
         <button
@@ -87,7 +87,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
           onSubmit={handleSubmit}
         >
           {({ values, setFieldValue }) => (
-            <Form className="w-[300px] flex flex-col">
+            <Form className="w-[300px] flex flex-col mo:w-full sm:w-full">
               <div className="relative">
                 <Field
                   type="text"
