@@ -14,7 +14,7 @@ const great_vibes = Great_Vibes({
 
 const Footer = () => {
   return (
-    <footer className="w-screen border-t-2 border-gray-300">
+    <footer className="border-t-2 border-gray-300">
       <div className="mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] mx-auto p-5 flex flex-col">
         <h1
           className={`${great_vibes.className} mo:text-3xl sm:text-4xl md:text-7xl text-[var(--primary)] font-semibold mb-5 self-center`}
