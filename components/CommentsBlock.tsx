@@ -79,7 +79,7 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
       {isCommentModalOpen && (
         <div
           onClick={handleBackdropClick}
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 p-5"
         >
           <div className="relative w-[500px] bg-white p-12 flex justify-center items-center rounded-2xl">
             <button
