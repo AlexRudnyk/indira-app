@@ -24,6 +24,8 @@ import CommentsList from "./CommentsList";
 import CommentItem from "./CommentItem";
 import ReplyModal from "./ReplyModal";
 import Footer from "./Footer";
+import CldImage from "./CldIimage";
+import Carousel from "./Carousel";
 
 export {
   NavBar,
@@ -52,4 +54,6 @@ export {
   CommentItem,
   ReplyModal,
   Footer,
+  CldImage,
+  Carousel,
 };

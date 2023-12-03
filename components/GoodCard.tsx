@@ -1,6 +1,6 @@
 import { GoodProps } from "@/types";
-import Image from "next/image";
 import Link from "next/link";
+import { CldImage } from ".";
 
 interface GoodCardProps {
   good: GoodProps;
@@ -15,12 +15,14 @@ const GoodCard = ({ good }: GoodCardProps) => {
       >
         <div>
           <div className="rounded-t-2xl overflow-hidden">
-            <Image
+            <CldImage
               src={good.photoURL}
               alt="good"
               width={400}
               height={400}
               className="rounded-t-2xl transition ease-in-out hover:scale-105 duration-300 w-full"
+              crop="fill"
+              gravity="auto"
             />
           </div>
           <div className="p-2">

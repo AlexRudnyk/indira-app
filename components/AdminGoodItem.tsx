@@ -2,12 +2,12 @@
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { EditGoodProps, GoodProps } from "@/types";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { ImPencil, ImBin2 } from "react-icons/im";
 import { useDispatch } from "react-redux";
 import { deleteGood, editGood } from "@/redux/goods/operations";
 import { ModalEditGood } from ".";
+import { CldImage } from "next-cloudinary";
 
 interface AdminGoodItemProps {
   good: GoodProps;
@@ -28,10 +28,12 @@ const AdminGoodItem = ({ good }: AdminGoodItemProps) => {
   return (
     <>
       <li className="flex items-center mb-[30px] last:mb-0 shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] p-1 rounded-xl">
-        <Image
+        <CldImage
           src={good.photoURL}
           width={100}
           height={100}
+          crop="fill"
+          gravity="auto"
           alt="Admin good item"
           className="mo:mr-[10px] sm:mr-[10px] md:mr-[10px] lg:mr-[30px] rounded-xl"
         />

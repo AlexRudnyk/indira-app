@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Success from "../public/success-check.png";
 import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 
 interface InitialStateProps {
   title: string;
@@ -100,11 +101,13 @@ const ImageUpload = ({ setFieldValue }: FormikProps) => {
           {preview && (
             <div>
               <div className="relative">
-                <Image
+                <CldImage
                   src={preview}
                   alt="preview"
                   width={300}
                   height={300}
+                  crop="fill"
+                  gravity="auto"
                   className="mb-5"
                 />
                 {isUploaded && (

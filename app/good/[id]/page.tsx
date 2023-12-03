@@ -1,24 +1,29 @@
 import { fetchSpecificGood } from "@/utils";
 import { GoodProps } from "@/types";
-import { AddToCartBtn, CommentsBlock, CommentsList } from "@/components";
-import Image from "next/image";
+import {
+  AddToCartBtn,
+  Carousel,
+  CldImage,
+  CommentsBlock,
+  CommentsList,
+} from "@/components";
 import Link from "next/link";
-import { fetchGoods } from "@/utils";
 
 const Good = async ({ params }: { params: { id: string } }) => {
   const good: GoodProps = await fetchSpecificGood(params.id);
-  const allGoods: GoodProps[] = await fetchGoods();
 
   return (
     <>
       <div className="mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] mx-auto p-5 mt-[120px]">
         <div className="flex flex-col md:flex-row rounded-2xl mb-7">
-          <Image
+          <CldImage
             src={good.photoURL}
             width={400}
             height={400}
             alt="good"
             className="rounded-2xl mr-0 mb-8 md:mb-0 md:mr-8 w-full md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]"
+            crop="fill"
+            gravity="auto"
           />
           <div className="flex flex-col justify-between">
             <div className="md:w-[400px] lg:w-full">
@@ -42,30 +47,7 @@ const Good = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         <CommentsList goodId={good._id} />
-        <div className="flex flex-col">
-          <p className="self-center mb-[40px] text-2xl font-bold">
-            You may also like:
-          </p>
-          <div className="w-full mo:h-[70px] sm:h-[70px] md:h-[120px] lg:h-[200px] overflow-x-hidden">
-            <ul className="flex whitespace-nowrap animate-slider will-change-transform w-[200%] hover:pause">
-              {allGoods.length > 0 &&
-                allGoods
-                  .filter((item: GoodProps) => item._id !== good._id)
-                  .map((good: GoodProps) => (
-                    <li key={good._id} className="mr-4">
-                      <Link href={`/good/${good._id}`}>
-                        <Image
-                          src={good.photoURL}
-                          alt="good"
-                          width={200}
-                          height={200}
-                        />
-                      </Link>
-                    </li>
-                  ))}
-            </ul>
-          </div>
-        </div>
+        <Carousel good={good} />
       </div>
     </>
   );

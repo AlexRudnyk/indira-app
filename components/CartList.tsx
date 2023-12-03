@@ -15,7 +15,7 @@ interface GoodInfoProps {
   count: number;
 }
 
-const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
+const CartList = () => {
   const { cart, setCart } = useGlobalContext();
   const [goodsArray, setGoodsArray] = useState<GoodProps[]>([]);
   const [totalSum, setTotalSum] = useState<number>(0);
@@ -23,6 +23,7 @@ const CartList = ({ allGoods }: { allGoods: GoodProps[] }) => {
 
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const user = useSelector((state: RootState) => state.auth.user);
+  const allGoods = useSelector((state: RootState) => state.goods.goods);
 
   let totalSumArr: number[] = [];
   let goodInfo: { title: string; price: number; count: number }[] = [];

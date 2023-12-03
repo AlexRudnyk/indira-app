@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { GoodProps } from "@/types";
-import Image from "next/image";
 import { ImBin2 } from "react-icons/im";
 import { useGlobalContext } from "@/app/context/store";
+import { CldImage } from "next-cloudinary";
 
 const CartItem = ({
   good,
@@ -33,16 +33,18 @@ const CartItem = ({
       price: good.price,
       count,
     });
-  }, [count, getTotalSum, good.price, good.title, goodInfo]);
+  }, [count, getTotalSum, good, good.price, good.title, goodInfo]);
 
   return (
     <li className="mb-8 last:mb-0">
       <div className="flex rounded-lg shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] p-1">
-        <Image
+        <CldImage
           src={good.photoURL}
           alt="good in cart"
           width={120}
           height={120}
+          crop="fill"
+          gravity="auto"
           className="mr-3 md:mr-6 rounded-lg mo:w-[90px] mo:h-[90px] sm:w-[90px] sm:h-[90px]"
         />
         <div className="w-[600px] mo:hidden sm:hidden md:flex md:items-center lg:block">
