@@ -1,0 +1,75 @@
+{
+  "authNav": {
+    "loginBtn": "Signin",
+    "registerBtn": "Signup"
+  },
+
+  "navBar": {
+    "cartBtn": "Cart"
+  },
+
+  "loginForm": {
+    "submit": "Submit",
+    "password": "Enter password"
+  },
+
+  "registerForm": {
+    "submit": "Submit",
+    "name": "Enter your name",
+    "password": "Enter password"
+  },
+
+  "good": {
+    "price": "Price",
+    "currency": "UAH",
+    "backHomeBtn": "Back to home"
+  },
+
+  "addToCartBtn": {
+    "addToCart": "Add to Cart"
+  },
+
+  "readCommentsBtn": {
+    "comments": "Comments"
+  },
+
+  "writeCommentBtn": {
+    "write": "Leave Comment"
+  },
+
+  "commentsBlock": {
+    "submit": "Submit",
+    "comment": "Please enter your comment"
+  },
+
+  "userNav": {
+    "hello": "Hello",
+    "signout": "Signout"
+  },
+
+  "carousel": {
+    "like": "You may also like"
+  },
+
+  "goodCard": {
+    "currency": "UAH"
+  },
+
+  "cartList": {
+    "totalSum": "Your order total Sum is",
+    "currency": "UAH",
+    "makeOrder": "Make Order",
+    "cartEmpty": "Your cart is empty",
+    "goShopping": "To go shopping!"
+  },
+
+  "cartItem": {
+    "price": "Price",
+    "currency": "UAH"
+  },
+
+  "orderModal": {
+    "submit": "Submit",
+    "name": "Enter your name"
+  }
+}

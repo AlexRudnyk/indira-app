@@ -1,0 +1,75 @@
+{
+  "authNav": {
+    "loginBtn": "Увійти",
+    "registerBtn": "Реєстрація"
+  },
+
+  "navBar": {
+    "cartBtn": "Кошик"
+  },
+
+  "loginForm": {
+    "submit": "Відправити",
+    "password": "Введіть пароль"
+  },
+
+  "registerForm": {
+    "submit": "Відправити",
+    "name": "Введіть своє ім'я",
+    "password": "Введіть пароль"
+  },
+
+  "good": {
+    "price": "Ціна",
+    "currency": "грн",
+    "backHomeBtn": "На головну"
+  },
+
+  "addToCartBtn": {
+    "addToCart": "В кошик"
+  },
+
+  "readCommentsBtn": {
+    "comments": "Коментарі"
+  },
+
+  "writeCommentBtn": {
+    "write": "Коментувати"
+  },
+
+  "commentsBlock": {
+    "submit": "Відправити",
+    "comment": "Будь ласка, напишіть коментар"
+  },
+
+  "userNav": {
+    "hello": "Привіт",
+    "signout": "Вийти"
+  },
+
+  "carousel": {
+    "like": "Вам також може сподобатись"
+  },
+
+  "goodCard": {
+    "currency": "грн"
+  },
+
+  "cartList": {
+    "totalSum": "Кінцева сума Вашого замовлення",
+    "currency": "грн",
+    "makeOrder": "Замовити",
+    "cartEmpty": "Ваш кошик порожній",
+    "goShopping": "Піти за покупками!"
+  },
+
+  "cartItem": {
+    "price": "Ціна",
+    "currency": "грн"
+  },
+
+  "orderModal": {
+    "submit": "Відправити",
+    "name": "Введіть своє ім'я"
+  }
+}
