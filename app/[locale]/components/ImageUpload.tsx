@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Success from "../../../public/success-check.png";
 import Image from "next/image";
 import { CldImage } from "next-cloudinary";
+import { useTranslations } from "next-intl";
 
 interface InitialStateProps {
   title: string;
@@ -21,6 +22,7 @@ const ImageUpload = ({ setFieldValue }: FormikProps) => {
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
+  const t = useTranslations("imageUpload");
 
   const uploadImage = async () => {
     if (!image) {
@@ -94,7 +96,7 @@ const ImageUpload = ({ setFieldValue }: FormikProps) => {
               className="flex cursor-pointer justify-center mb-[30px] py-5 border-b-2 border-gray-300"
             >
               <div className="flex justify-center items-center py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl">
-                Upload file
+                {t("uploadFile")}
               </div>
             </label>
           )}
@@ -127,14 +129,14 @@ const ImageUpload = ({ setFieldValue }: FormikProps) => {
                   disabled={isUploaded}
                   className="flex justify-center items-center py-3 px-6 outline-none transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl"
                 >
-                  Upload
+                  {t("upload")}
                 </button>
                 <button
                   type="button"
                   onClick={handleResetClick}
                   className="flex justify-center items-center py-3 px-6 outline-none transition ease-in-out hover:scale-110 bg-[var(--primary)] text-white rounded-2xl"
                 >
-                  Reset
+                  {t("reset")}
                 </button>
               </div>
             </div>

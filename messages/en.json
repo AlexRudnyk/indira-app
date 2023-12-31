@@ -5,7 +5,8 @@
   },
 
   "navBar": {
-    "cartBtn": "Cart"
+    "cartBtn": "Cart",
+    "admin": "Admin"
   },
 
   "loginForm": {
@@ -39,12 +40,14 @@
 
   "commentsBlock": {
     "submit": "Submit",
-    "comment": "Please enter your comment"
+    "comment": "Please enter your comment",
+    "warning": "Please sign in to leave a comment"
   },
 
   "userNav": {
     "hello": "Hello",
-    "signout": "Signout"
+    "signout": "Signout",
+    "admin": "Admin"
   },
 
   "carousel": {
@@ -71,5 +74,37 @@
   "orderModal": {
     "submit": "Submit",
     "name": "Enter your name"
+  },
+
+  "adminPage": {
+    "title": "Please enter a title",
+    "text": "Please enter a text",
+    "description": "Please enter description",
+    "price": "Please enter a price",
+    "submit": "Submit"
+  },
+
+  "imageUpload": {
+    "uploadFile": "Upload file",
+    "upload": "Upload",
+    "reset": "Reset"
+  },
+
+  "adminGoodItem": {
+    "comments": "Comments",
+    "currency": "UAH"
+  },
+
+  "modalEditGood": {
+    "submit": "Submit",
+    "title": "Please enter a title",
+    "text": "Please enter a text",
+    "description": "Please enter description",
+    "price": "Please enter a price"
+  },
+
+  "replyModal": {
+    "submit": "Submit",
+    "comment": "Please enter your reply"
   }
 }

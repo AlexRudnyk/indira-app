@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikState } from "formik";
 import * as yup from "yup";
 import { AdminGoodItem, CustomBtn, ImageUpload } from ".";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import { addGoods } from "@/redux/goods/operations";
 import { GoodProps } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface InitialStateProps {
   title: string;
@@ -43,6 +44,7 @@ const AdminPageClient = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const allGoodsReversed = [...allGoods].reverse();
+  const t = useTranslations("adminPage");
 
   useEffect(() => {
     user.role !== "admin" ? router.replace("/") : router.replace("/admin");
@@ -79,7 +81,7 @@ const AdminPageClient = () => {
               <Field
                 type="text"
                 name="title"
-                placeholder="Please enter a title"
+                placeholder={t("title")}
                 className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
               />
               <div className="absolute top-10 text-red-600">
@@ -90,7 +92,7 @@ const AdminPageClient = () => {
               <Field
                 type="text"
                 name="text"
-                placeholder="Please enter a text"
+                placeholder={t("text")}
                 className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
               />
               <div className="absolute top-10 text-red-600">
@@ -104,7 +106,7 @@ const AdminPageClient = () => {
                 type="text"
                 name="description"
                 className="p-2 mb-[30px] border-b-2 border-gray-300 w-full resize-none"
-                placeholder="Please enter description"
+                placeholder={t("description")}
                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                   setFieldValue("description", e.currentTarget.value);
                   setDescription(e.currentTarget.value);
@@ -119,7 +121,7 @@ const AdminPageClient = () => {
               <Field
                 type="number"
                 name="price"
-                placeholder="Please enter a price"
+                placeholder={t("price")}
                 className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
               />
               <div className="absolute top-10 text-red-600">
@@ -129,7 +131,7 @@ const AdminPageClient = () => {
 
             <CustomBtn
               btnType="submit"
-              title="Submit"
+              title={t("submit")}
               containerStyles="bg-[var(--primary)] text-white rounded-2xl mr-3 w-[100px] self-center"
             />
           </Form>

@@ -43,9 +43,7 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
   const t = useTranslations("commentsBlock");
 
   const handleToggleModal = (value: boolean) => {
-    isLoggedIn
-      ? setIsCommentModalOpen(value)
-      : toast.warn("Please sign in to leave a comment");
+    isLoggedIn ? setIsCommentModalOpen(value) : toast.warn(t("warning"));
   };
 
   useEffect(() => {

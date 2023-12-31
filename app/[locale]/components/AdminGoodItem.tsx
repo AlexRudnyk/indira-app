@@ -1,13 +1,14 @@
 "use client";
 
-import { AppDispatch, RootState } from "@/redux/store";
+import { AppDispatch } from "@/redux/store";
 import { EditGoodProps, GoodProps } from "@/types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ImPencil, ImBin2 } from "react-icons/im";
 import { useDispatch } from "react-redux";
 import { deleteGood, editGood } from "@/redux/goods/operations";
 import { ModalEditGood } from ".";
 import { CldImage } from "next-cloudinary";
+import { useTranslations } from "next-intl";
 
 interface AdminGoodItemProps {
   good: GoodProps;
@@ -16,6 +17,7 @@ interface AdminGoodItemProps {
 const AdminGoodItem = ({ good }: AdminGoodItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
+  const t = useTranslations("adminGoodItem");
 
   const handleModalOpenToggle = (): void => {
     setIsModalOpen(!isModalOpen);
@@ -42,10 +44,12 @@ const AdminGoodItem = ({ good }: AdminGoodItemProps) => {
             {good.title}
           </p>
           <p className="text-sm md:text-base">
-            Comments ({good.comments?.length})
+            {t("comments")} ({good.comments?.length})
           </p>
         </div>
-        <p className="md:mr-[10px] lg:mr-[80px]">{good.price} UAH</p>
+        <p className="md:mr-[10px] lg:mr-[80px]">
+          {good.price} {t("currency")}
+        </p>
         <button
           type="button"
           className="mr-[20px] md:mr-[10px] lg:mr-[40px] p-3"

@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useFormStatus } from "react-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { useTranslations } from "next-intl";
 
 interface ReplyModalProps {
   onSubmit: (values: CommentProps) => void;
@@ -21,6 +22,7 @@ const schema = yup.object().shape({
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("replyModal");
 
   return (
     <button
@@ -28,12 +30,14 @@ function SubmitButton() {
       disabled={pending}
       className="flex self-center justify-center items-center w-[150px] bg-[var(--primary)] text-white rounded-2xl py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110"
     >
-      Submit
+      {t("submit")}
     </button>
   );
 }
 
 const ReplyModal = ({ onSubmit, onClose }: ReplyModalProps) => {
+  const t = useTranslations("replyModal");
+
   useEffect(() => {
     const onEscClick = (e: KeyboardEvent) => {
       if (e.code === "Escape") onClose();
@@ -85,7 +89,7 @@ const ReplyModal = ({ onSubmit, onClose }: ReplyModalProps) => {
                   type="text"
                   name="text"
                   className="p-2 mb-[30px] border-b-2 border-gray-300 w-full resize-none"
-                  placeholder="Please enter your comment"
+                  placeholder={t("comment")}
                   onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     setFieldValue("text", e.currentTarget.value);
                   }}

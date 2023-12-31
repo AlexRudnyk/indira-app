@@ -61,7 +61,7 @@ const NavBar = () => {
           {user.role === "admin" ? (
             <Link href="/admin">
               <CustomBtn
-                title="Admin"
+                title={t("admin")}
                 btnType="button"
                 containerStyles="bg-[var(--primary)] text-white rounded-2xl"
               />

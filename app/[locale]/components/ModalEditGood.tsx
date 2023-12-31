@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useFormStatus } from "react-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { useTranslations } from "next-intl";
 
 interface ModalEditGoodProps {
   good: GoodProps;
@@ -23,6 +24,7 @@ const schema = yup.object().shape({
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("modalEditGood");
 
   return (
     <button
@@ -30,13 +32,14 @@ function SubmitButton() {
       disabled={pending}
       className="flex self-center justify-center items-center w-[150px] bg-[var(--primary)] text-white rounded-2xl py-3 px-6 outline-none shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] transition ease-in-out hover:scale-110"
     >
-      Submit
+      {t("submit")}
     </button>
   );
 }
 
 const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
   const [description, setDescription] = useState<string>(good.description);
+  const t = useTranslations("modalEditGood");
 
   useEffect(() => {
     const onEscClick = (e: KeyboardEvent) => {
@@ -92,7 +95,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
                 <Field
                   type="text"
                   name="title"
-                  placeholder="Please enter a title"
+                  placeholder={t("title")}
                   className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
                 />
                 <div className="absolute top-10 text-red-600">
@@ -103,7 +106,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
                 <Field
                   type="text"
                   name="text"
-                  placeholder="Please enter a text"
+                  placeholder={t("text")}
                   className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
                 />
                 <div className="absolute top-10 text-red-600">
@@ -117,7 +120,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
                   type="text"
                   name="description"
                   className="p-2 mb-[30px] border-b-2 border-gray-300 w-full resize-none"
-                  placeholder="Please enter description"
+                  placeholder={t("description")}
                   onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     setFieldValue("description", e.currentTarget.value);
                     setDescription(e.currentTarget.value);
@@ -132,7 +135,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
                 <Field
                   type="number"
                   name="price"
-                  placeholder="Please enter a price"
+                  placeholder={t("price")}
                   className="p-2 mb-[30px] border-b-2 border-gray-300 w-full"
                 />
                 <div className="absolute top-10 text-red-600">

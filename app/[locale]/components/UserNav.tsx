@@ -38,7 +38,7 @@ const UserNav = ({ closeAfterClick, isBurgerMenuOpen }: UserNavProps) => {
       {user.role === "admin" && (
         <Link href="/admin" className="md:hidden">
           <CustomBtn
-            title="Admin"
+            title={t("admin")}
             btnType="button"
             containerStyles="bg-[var(--primary)] text-white rounded-2xl w-[100px]"
             handleClick={() => {
