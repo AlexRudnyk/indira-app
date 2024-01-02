@@ -6,7 +6,9 @@
 
   "navBar": {
     "cartBtn": "Cart",
-    "admin": "Admin"
+    "admin": "Admin",
+    "home": "Home",
+    "hello": "Hello"
   },
 
   "loginForm": {

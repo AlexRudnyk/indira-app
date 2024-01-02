@@ -6,7 +6,9 @@
 
   "navBar": {
     "cartBtn": "Кошик",
-    "admin": "Адмін"
+    "admin": "Адмін",
+    "home": "Головна",
+    "hello": "Привіт"
   },
 
   "loginForm": {

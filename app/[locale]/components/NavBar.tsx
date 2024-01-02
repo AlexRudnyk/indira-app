@@ -48,15 +48,23 @@ const NavBar = () => {
             className="absolute top-[5px] mo:top-[10px] left-[5px] -z-10 opacity-60 mo:w-[60px]"
           />
         </Link>
-        <div className="flex">
-          <Link href="/" locale="uk" className="mr-7">
-            UK
-          </Link>
-          <Link href="/" locale="en">
-            EN
-          </Link>
-        </div>
         <nav className="hidden md:flex items-center">
+          <div className="flex mr-5">
+            <Link
+              href="/"
+              locale="uk"
+              className="py-1 px-3 border-r-2 border-r-gray-400 text-gray-400 hover:text-black focus:text-black transition ease-in-out"
+            >
+              UK
+            </Link>
+            <Link
+              href="/"
+              locale="en"
+              className="py-1 px-3  text-gray-400 hover:text-black focus:text-black transition ease-in-out"
+            >
+              EN
+            </Link>
+          </div>
           {isLoggedIn ? <UserNav /> : <AuthNav />}
           {user.role === "admin" ? (
             <Link href="/admin">
@@ -78,7 +86,22 @@ const NavBar = () => {
           )}
         </nav>
         <div className="flex items-center md:hidden">
-          {isLoggedIn && <p className="mr-4">Hello, {user.name}</p>}
+          <div className="flex mr-5">
+            <Link
+              href="/"
+              locale="uk"
+              className="py-1 px-3 border-r-2 border-r-gray-400 text-gray-400 hover:text-black focus:text-black transition ease-in-out"
+            >
+              UK
+            </Link>
+            <Link
+              href="/"
+              locale="en"
+              className="py-1 px-3  text-gray-400 hover:text-black focus:text-black transition ease-in-out"
+            >
+              EN
+            </Link>
+          </div>
           {user.role !== "admin" && (
             <Link href="/cart" className="relative mr-4">
               <CustomBtn
@@ -98,6 +121,11 @@ const NavBar = () => {
           </button>
           {isBurgerMenuOpen && (
             <div className="fixed top-0 left-0 flex flex-col justify-center items-center bg-white w-screen p-10">
+              {isLoggedIn && (
+                <p className="mb-5 text-xl">
+                  {t("hello")}, {user.name}
+                </p>
+              )}
               <button
                 type="button"
                 className="absolute top-[10px] right-[10px] p-4 rounded-full z-10"
@@ -108,7 +136,7 @@ const NavBar = () => {
               <Link href="/">
                 <CustomBtn
                   btnType="button"
-                  title="Home"
+                  title={t("home")}
                   containerStyles="bg-[var(--primary)] text-white rounded-2xl mb-5 w-[100px]"
                   handleClick={handleBurgerMenuToggle}
                 />
