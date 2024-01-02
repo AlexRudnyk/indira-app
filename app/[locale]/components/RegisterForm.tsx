@@ -28,18 +28,18 @@ function SubmitButton() {
 const schema = yup.object().shape({
   name: yup
     .string()
-    .min(2)
-    .max(16, "Less_than_16")
+    .min(2, "Atleast 2 symbols are required")
+    .max(16, "Should not be more than 16 characters")
     .required("Name is required"),
   email: yup
     .string()
     .email()
     .matches(
       /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-      "Available_latin_based"
+      "Only latin letters are available"
     )
-    .min(5, "Atleast_5")
-    .max(63, "Email_length")
+    .min(5, "Atleast 5 symbols are required")
+    .max(63, "Should not be more than 63 characters")
     .required("Email is required"),
   phone: yup
     .string()
@@ -47,9 +47,12 @@ const schema = yup.object().shape({
     .required("Phone is required"),
   password: yup
     .string()
-    .min(7, "Atleast_7")
-    .max(12, "Password_length")
-    .matches(/^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/, "Only_latinic")
+    .min(7, "Atleast 7 symbols are required")
+    .max(12, "Should not be more than 12 characters")
+    .matches(
+      /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/,
+      "Only latin letters are available"
+    )
     .required("Password is required"),
 });
 
