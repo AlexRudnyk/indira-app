@@ -36,14 +36,6 @@ function SubmitButton() {
   );
 }
 
-// const CommentsBlockSchema = () => {
-//   const t = useTranslations("errors");
-
-//   return yup.object().shape({
-//     text: yup.string().min(5, t("atleast_5")).required(t("commentRequired")),
-//   });
-// };
-
 const CommentsBlock = ({ goodId }: { goodId: string }) => {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState<boolean>();
   const dispatch = useDispatch<AppDispatch>();
@@ -101,7 +93,6 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
             <Formik
               initialValues={initialValues}
               validationSchema={schema}
-              // validationSchema={CommentsBlockSchema()}
               onSubmit={handleSubmit}
             >
               {({ values, setFieldValue }) => (
