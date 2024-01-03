@@ -36,27 +36,28 @@ function SubmitButton() {
   );
 }
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .min(2)
-    .max(16, "Should not be more than 16 characters")
-    .required("Name is required"),
-  email: yup
-    .string()
-    .email()
-    .matches(
-      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-      "Only latin letters are available"
-    )
-    .min(5, "Atleast 5 symbols are required")
-    .max(63, "Should not be more than 63 characters")
-    .required("Email is required"),
-  phone: yup
-    .string()
-    .matches(/^\+380\d{9}$/)
-    .required("Phone is required"),
-});
+const OrderModalSchema = () => {
+  const t = useTranslations("errors");
+
+  return yup.object().shape({
+    name: yup
+      .string()
+      .min(2, t("atleast_2"))
+      .max(16, t("less_16"))
+      .required(t("nameRequired")),
+    email: yup
+      .string()
+      .email()
+      .matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, t("latin"))
+      .min(5, t("atleast_5"))
+      .max(63, t("less_63"))
+      .required(t("emailRequired")),
+    phone: yup
+      .string()
+      .matches(/^\+380\d{9}$/)
+      .required(t("phoneRequired")),
+  });
+};
 
 const OrderModal = ({ onCloseModal, onOrderSubmit }: OrderModalProps) => {
   const router = useRouter();
@@ -110,7 +111,7 @@ const OrderModal = ({ onCloseModal, onOrderSubmit }: OrderModalProps) => {
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
-          validationSchema={schema}
+          validationSchema={OrderModalSchema()}
         >
           <Form className="flex flex-col w-full">
             <div className="relative">

@@ -14,13 +14,17 @@ interface ModalEditGoodProps {
   onClose: () => void;
 }
 
-const schema = yup.object().shape({
-  title: yup.string().min(2).max(30, "Should be less then 30 characters"),
-  text: yup.string().min(5, "Should be atleast 5 characters"),
-  description: yup.string().min(5, "Should be atleast 5 characters"),
-  photoURL: yup.string(),
-  price: yup.number(),
-});
+const ModalEditGoodSchema = () => {
+  const t = useTranslations("errors");
+
+  return yup.object().shape({
+    title: yup.string().min(2, t("atleast_2")).max(30, t("less_30")),
+    text: yup.string().min(5, t("atleast_5")),
+    description: yup.string().min(5, t("atleast_5")),
+    photoURL: yup.string(),
+    price: yup.number(),
+  });
+};
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -86,7 +90,7 @@ const ModalEditGood = ({ good, onClose, onSubmit }: ModalEditGoodProps) => {
         </button>
         <Formik
           initialValues={initialValues}
-          validationSchema={schema}
+          validationSchema={ModalEditGoodSchema()}
           onSubmit={handleSubmit}
         >
           {({ values, setFieldValue }) => (

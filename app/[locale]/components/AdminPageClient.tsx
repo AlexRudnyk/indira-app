@@ -23,19 +23,20 @@ interface ResetFormProps {
   resetForm: (nextState?: Partial<FormikState<InitialStateProps>>) => void;
 }
 
-const schema = yup.object().shape({
-  title: yup
-    .string()
-    .min(2)
-    .max(30, "Should be less then 30 characters")
-    .required("Title is required"),
-  text: yup
-    .string()
-    .min(5, "Should be atleast 5 characters")
-    .required("Text is required"),
-  photoURL: yup.string().required("Photo is required"),
-  price: yup.number().required("Price is required"),
-});
+const AdminPageSchema = () => {
+  const t = useTranslations("errors");
+
+  return yup.object().shape({
+    title: yup
+      .string()
+      .min(2)
+      .max(30, t("less_30"))
+      .required(t("titleRequired")),
+    text: yup.string().min(5, t("atleast_5")).required(t("textRequired")),
+    photoURL: yup.string().required(t("photoRequired")),
+    price: yup.number().required(t("priceRequired")),
+  });
+};
 
 const AdminPageClient = () => {
   const [description, setDescription] = useState<string>("");
@@ -71,7 +72,7 @@ const AdminPageClient = () => {
     <div className="flex flex-col md:flex-row">
       <Formik
         initialValues={initialValues}
-        validationSchema={schema}
+        validationSchema={AdminPageSchema()}
         onSubmit={handleSubmit}
       >
         {({ values, setFieldValue }) => (

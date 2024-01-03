@@ -28,7 +28,7 @@ export default function RootLayout({
           <PersistGates>
             <ReduxWrapper>
               <GlobalContextProvider>
-                <NextIntlClientProvider messages={messages}>
+                <NextIntlClientProvider locale={locale} messages={messages}>
                   <NavBar />
                   {children}
                   <Footer />

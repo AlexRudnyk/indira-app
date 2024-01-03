@@ -5,7 +5,8 @@ import { BsInstagram } from "react-icons/bs";
 import { LiaTelegramPlane } from "react-icons/lia";
 import { SiFacebook } from "react-icons/si";
 import { FaTiktok } from "react-icons/fa";
-import Link from "next/link";
+import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
 
 const great_vibes = Great_Vibes({
   subsets: ["latin"],
@@ -13,6 +14,8 @@ const great_vibes = Great_Vibes({
 });
 
 const Footer = () => {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t-2 border-gray-300">
       <div className="mo:max-w-[480px] sm:w-[480px] md:w-[768px] lg:w-[1280px] mx-auto p-5 flex flex-col">
@@ -40,7 +43,9 @@ const Footer = () => {
               <div className="mr-4">
                 <BsInstagram size={20} />
               </div>
-              <p className="md:text-sm lg:text-lg p-3 md:p-2">My Instagram</p>
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">
+                {t("my")} Instagram
+              </p>
             </Link>
             <Link
               href="https://t.me/indira_soap"
@@ -51,7 +56,9 @@ const Footer = () => {
               <div className="mr-4">
                 <LiaTelegramPlane size={20} />
               </div>
-              <p className="md:text-sm lg:text-lg p-3 md:p-2">My Telegram</p>
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">
+                {t("my")} Telegram
+              </p>
             </Link>
             <Link
               href="https://m.facebook.com/sheina.anna?refid=52&__tn__=C-R"
@@ -62,7 +69,9 @@ const Footer = () => {
               <div className="mr-4">
                 <SiFacebook size={20} />
               </div>
-              <p className="md:text-sm lg:text-lg p-3 md:p-2">My Facebook</p>
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">
+                {t("my")} Facebook
+              </p>
             </Link>
             <Link
               href="https://www.tiktok.com/@indira_soap?_t=8hkJLs29ZAr&_r=1"
@@ -73,13 +82,15 @@ const Footer = () => {
               <div className="mr-4">
                 <FaTiktok size={20} />
               </div>
-              <p className="md:text-sm lg:text-lg p-3 md:p-2">My TikTok</p>
+              <p className="md:text-sm lg:text-lg p-3 md:p-2">
+                {t("my")} TikTok
+              </p>
             </Link>
           </div>
         </div>
         <div className="border-t border-gray-300">
           <p className="mt-3 text-sm text-gray-500">
-            &copy;2023 Indira Soap All rights reserved
+            &copy;2023 Indira Soap {t("reserved")}
           </p>
         </div>
       </div>

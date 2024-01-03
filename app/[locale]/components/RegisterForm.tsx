@@ -25,36 +25,34 @@ function SubmitButton() {
   );
 }
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .min(2, "Atleast 2 symbols are required")
-    .max(16, "Should not be more than 16 characters")
-    .required("Name is required"),
-  email: yup
-    .string()
-    .email()
-    .matches(
-      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-      "Only latin letters are available"
-    )
-    .min(5, "Atleast 5 symbols are required")
-    .max(63, "Should not be more than 63 characters")
-    .required("Email is required"),
-  phone: yup
-    .string()
-    .matches(/^\+380\d{9}$/)
-    .required("Phone is required"),
-  password: yup
-    .string()
-    .min(7, "Atleast 7 symbols are required")
-    .max(12, "Should not be more than 12 characters")
-    .matches(
-      /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/,
-      "Only latin letters are available"
-    )
-    .required("Password is required"),
-});
+const RegisterSchema = () => {
+  const t = useTranslations("errors");
+
+  return yup.object().shape({
+    name: yup
+      .string()
+      .min(2, t("atleast_2"))
+      .max(16, t("less_16"))
+      .required(t("nameRequired")),
+    email: yup
+      .string()
+      .email()
+      .matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, t("latin"))
+      .min(5, t("atleast_5"))
+      .max(63, t("less_63"))
+      .required(t("emailRequired")),
+    phone: yup
+      .string()
+      .matches(/^\+380\d{9}$/)
+      .required(t("phoneRequired")),
+    password: yup
+      .string()
+      .min(7, t("atleast_7"))
+      .max(12, t("less_12"))
+      .matches(/^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/, t("latin"))
+      .required(t("passwordRequired")),
+  });
+};
 
 const RegisterForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -102,7 +100,7 @@ const RegisterForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={schema}
+      validationSchema={RegisterSchema()}
     >
       <Form className="flex flex-col w-[400px] p-6 rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] bg-white">
         <div className="relative">

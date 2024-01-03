@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl";
 const schema = yup.object().shape({
   text: yup
     .string()
-    .min(5, "Should be atleast 5 characters")
+    .min(5, "Atleast 5 symbols are required")
     .required("comment is required"),
 });
 
@@ -35,6 +35,14 @@ function SubmitButton() {
     </button>
   );
 }
+
+// const CommentsBlockSchema = () => {
+//   const t = useTranslations("errors");
+
+//   return yup.object().shape({
+//     text: yup.string().min(5, t("atleast_5")).required(t("commentRequired")),
+//   });
+// };
 
 const CommentsBlock = ({ goodId }: { goodId: string }) => {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState<boolean>();
@@ -93,6 +101,7 @@ const CommentsBlock = ({ goodId }: { goodId: string }) => {
             <Formik
               initialValues={initialValues}
               validationSchema={schema}
+              // validationSchema={CommentsBlockSchema()}
               onSubmit={handleSubmit}
             >
               {({ values, setFieldValue }) => (

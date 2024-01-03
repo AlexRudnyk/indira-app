@@ -108,5 +108,30 @@
   "replyModal": {
     "submit": "Submit",
     "comment": "Please enter your reply"
+  },
+
+  "errors": {
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "latin": "Only latin letters are available",
+    "atleast_5": "Atleast 5 symbols are required",
+    "less_63": "Should not be more than 63 characters",
+    "atleast_7": "Atleast 7 symbols are required",
+    "less_12": "Should not be more than 12 characters",
+    "atleast_2": "Atleast 2 symbols are required",
+    "less_16": "Should not be more than 16 characters",
+    "nameRequired": "Name is required",
+    "phoneRequired": "Phone is required",
+    "less_30": "Should be less then 30 characters",
+    "commentRequired": "comment is required",
+    "titleRequired": "Title is required",
+    "textRequired": "Text is required",
+    "photoRequired": "Photo is required",
+    "priceRequired": "Price is required"
+  },
+
+  "footer": {
+    "reserved": "All rights reserved",
+    "my": "My"
   }
 }

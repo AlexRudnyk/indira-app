@@ -25,27 +25,25 @@ function SubmitButton() {
   );
 }
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .matches(
-      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-      "Only latin letters are available"
-    )
-    .min(5, "Atleast 5 symbols are required")
-    .max(63, "Should not be more than 63 characters")
-    .required("Email is required"),
-  password: yup
-    .string()
-    .min(7, "Atleast 7 symbols are required")
-    .max(12, "Should not be more than 12 characters")
-    .matches(
-      /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/,
-      "Only latin letters are available"
-    )
-    .required("Password is required"),
-});
+const LoginSchema = () => {
+  const t = useTranslations("errors");
+
+  return yup.object().shape({
+    email: yup
+      .string()
+      .email()
+      .matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, t("latin"))
+      .min(5, t("atleast_5"))
+      .max(63, t("less_63"))
+      .required(t("emailRequired")),
+    password: yup
+      .string()
+      .min(7, t("atleast_7"))
+      .max(12, t("less_12"))
+      .matches(/^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/, t("latin"))
+      .required(t("passwordRequired")),
+  });
+};
 
 const LoginForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -78,7 +76,7 @@ const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={schema}
+      validationSchema={LoginSchema()}
     >
       <Form className="flex flex-col w-[400px] p-6 rounded-2xl shadow-[7px_15px_20px_0px_rgba(0,0,0,0.6)] bg-white">
         <div className="relative">

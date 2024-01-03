@@ -13,12 +13,13 @@ interface ReplyModalProps {
   onClose: () => void;
 }
 
-const schema = yup.object().shape({
-  text: yup
-    .string()
-    .min(5, "Should be atleast 5 characters")
-    .required("comment is required"),
-});
+const ReplyModalSchema = () => {
+  const t = useTranslations("errors");
+
+  return yup.object().shape({
+    text: yup.string().min(5, t("atleast_5")).required(t("commentRequired")),
+  });
+};
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -78,7 +79,7 @@ const ReplyModal = ({ onSubmit, onClose }: ReplyModalProps) => {
         </button>
         <Formik
           initialValues={initialValues}
-          validationSchema={schema}
+          validationSchema={ReplyModalSchema()}
           onSubmit={handleSubmit}
         >
           {({ values, setFieldValue }) => (
